@@ -236,7 +236,9 @@ foreach($tags as $key => $value){
                     if(j===19 && !hasid) break;
                 }
             }
-            if(hasid) { alert("一次就好~"); return; }
+            if(hasid) { $('#btn-like').popover({
+                content: '一次就好~'
+            }); return; }
             else saveid += ','+aid;
             Cookies.set('diggid',saveid,{ expires: 1 });
             getDigg('good')
