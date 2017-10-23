@@ -102,7 +102,7 @@ $revalue = '';
 $tags = explode(',', $tags);
 foreach($tags as $key => $value){
             if($value){
-                $revalue .= $value;
+                $revalue .= '<a href="'.$cfg_cmspath.'/tags.php?/'.$value.'/">'.$value.'</a>, ';
    }
   }
 @me = substr($revalue,0,-2);
@@ -204,7 +204,6 @@ foreach($tags as $key => $value){
             action='num'
         }
         $.get("{dede:global.cfg_phpurl/}/digg_ajax.php?action="+action+"&formurl=caicai"+"&id="+"{dede:field.id/}",function(data,status){
-            alert("Data: " + data + "\nStatus: " + status);
             like_count.text(data)
             });
         }
