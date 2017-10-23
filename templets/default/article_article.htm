@@ -198,50 +198,55 @@ foreach($tags as $key => $value){
 
 <script language="javascript" type="text/javascript">
     $(function () {
-//    function postGood(aid)
-//    {
-//        var like_count = $('#like-count')
-//        var saveid = Cookies.get('diggid');
-//        if(saveid !== null)
-//        {
-//            var saveids = saveid.split(',');
-//            var hasid = false;
-//            saveid = '';
-//            j = 1;
-//            for(i=saveids.length-1;i>=0;i--)
-//            {
-//                if(saveids[i]===aid && hasid)
-//                {}
-//                else {
-//                    if(saveids[i]===aid && !hasid) hasid = true;
-//                    saveid += (saveid==='' ? saveids[i] : ','+saveids[i]);
-//                    j++;
-//                    if(j===20 && hasid) break;
-//                    if(j===19 && !hasid) break;
-//                }
-//            }
-//            if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
-//            else saveid += ','+aid;
-//            Cookies.set('diggid',saveid,{ expires: 1 });
-//        }
-//        else
-//        {
-//            Cookies.set('diggid',aid,{ expires: 1 });
-//        }
-////        like_count.text()
-//        myajax = new DedeAjax(taget_obj,false,false,'','','');
-//        var url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action=good"+"&id="+aid;
-//        myajax.SendGet2(url);
-//
-//    }
-    function getDigg()
-    {
+    function getDigg(action) {
         var like_count = $('#like-count')
-        $.get("{dede:global.cfg_phpurl/}/digg_ajax.php?action=num&formurl=caicai"+"&id="+"{dede:field.id/}",function(data,status){
+        if(!action){
+            action='num'
+        }
+        $.get("{dede:global.cfg_phpurl/}/digg_ajax.php?action="+action+"&formurl=caicai"+"&id="+"{dede:field.id/}",function(data,status){
             alert("Data: " + data + "\nStatus: " + status);
             like_count.text(data)
-        });
+            });
+        }
+    function postGood()
+    {
+        var saveid = Cookies.get('diggid');
+        if(saveid !== null)
+        {
+            var saveids = saveid.split(',');
+            var hasid = false;
+            saveid = '';
+            j = 1;
+            for(i=saveids.length-1;i>=0;i--)
+            {
+                if(saveids[i]===aid && hasid)
+                {}
+                else {
+                    if(saveids[i]===aid && !hasid) hasid = true;
+                    saveid += (saveid==='' ? saveids[i] : ','+saveids[i]);
+                    j++;
+                    if(j===20 && hasid) break;
+                    if(j===19 && !hasid) break;
+                }
+            }
+            if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+            else saveid += ','+aid;
+            Cookies.set('diggid',saveid,{ expires: 1 });
+            getDigg('good')
+        }
+        else
+        {
+            Cookies.set('diggid',aid,{ expires: 1 });
+            getDigg('good')
+        }
+
+
+
     }
+
+    $('#btn-like').click(function () {
+        postGood()
+    })
     getDigg()
     })
 
