@@ -123,7 +123,7 @@ foreach($tags as $key => $value){
                 <li>{dede:prenext get='pre'/}</li>
                 <li>{dede:prenext get='next'/}</li>
             </ul>
-        
+
             <div class="am-g" style="padding: 10px;">
                 {dede:changyan/}
             </div>
@@ -236,7 +236,7 @@ foreach($tags as $key => $value){
                     if(j===19 && !hasid) break;
                 }
             }
-            if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+            if(hasid) { alert("一次就好~"); return; }
             else saveid += ','+aid;
             Cookies.set('diggid',saveid,{ expires: 1 });
             getDigg('good')
