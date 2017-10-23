@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
+<title><?php echo $cfg_webname;?>_高级搜索</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+<link href="/dedemao/css/stylev2.1.css" rel="stylesheet" type="text/css" />
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/dedemao/js/v2/jquery-cookie.js"></script>
+</head>
+<body class="bg">
+<script src='/plus/mytag_js.php?aid=1' language='javascript'></script>
+<div id="con">
+
+        <form name="form1" action="search.php" method="get">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzgyMjA3MDU0ZGSQ9hveelvoRPJoyI3HDVLoezU3pYgmtyKc3QF5hZ9++A==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form2'];
+if (!theForm) {
+    theForm = document.form2;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=Ai9xZhiV9vgPFyMZQbBT-W1Pzz0CFVm9h4SC9kTOy6CLmhVzDHIPPnKmaQNS33t1NdHRGmBfs1GRgRPeCbHETx_7nM6QVVgfgOByk19Okd01&amp;t=635117217316159565" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=Th936wmsAje4jWy2OaJ56ImYugy5RNfQLm3kzIn4Y9FnQlybgb4T1tIgEsqc--97KrkyY-YvlCqUa3Z2Xarzw1sMoG169AIm_TjeOJ6OT6Q1&amp;t=635117217316159565" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAMyThAgDSwhyOOjzflU+CvcSdAMaZVUN7TCydqcun4gmI7U3Vc0WZ+wxclqyPFfzmOnyVDTyzgDi5WoBHsvHSespL6uFPDMb7jHx5QRsZg2MA==" />
+</div>
+        <div id="wrapper">
+               <div class="advanced_search">
+               <div>
+               <span style="font-size:14px;">关键字:</span>&nbsp;&nbsp;  <input name="q" type="text" id="searchkeyword" style="width:230px;" class="focus" onkeydown="if(event.keyCode==13){btnSearch.focus();}" />&nbsp;&nbsp;
+                <span id="RequiredFieldValidator1" style="display:none;">关键字不能为空</span>
+                                        <input type="submit" name="btnSearch" value="搜索" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnSearch&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="btnSearch" class="search-submit" /></div>
+                <div class="a_search">
+				
+                </div>
+                <div class="a_search time_radio">
+                     <span>时&nbsp;&nbsp;&nbsp;间:</span>&nbsp;&nbsp;
+                <select name="starttime" id="starttime" >
+                        <option value="-1" selected>--不限--</option>
+                        <option value="7">一周以内</option>
+                        <option value="30">一个月内</option>
+                        <option value="90">三个月内</option>
+                        <option value="180">半年以内</option>
+                      </select>
+                </div>
+
+<div class="a_search">
+                     <span style="font-size:14px; vertical-align:top">分&nbsp;&nbsp;&nbsp;类:</span>&nbsp;&nbsp;
+			<?php
+              $tl = new TypeLink(0);
+              $typeOptions = $tl->GetOptionArray(0,0,0);
+              echo "<select name='typeid' id='bigclass' multiple='multiple' style='height:300px;'>\r\n";
+              echo "<option value='0' selected>--不限栏目--</option>\r\n";
+              echo $typeOptions;
+              echo "</select>";
+            ?>
+                    
+                </div>
+                                    
+                
+                <div class="a_search">
+                     <span style="font-size:14px; vertical-align:top">排&nbsp;&nbsp;&nbsp;序:</span>&nbsp;&nbsp;
+                     <select name="orderby" id="orderby" >
+                        <option value="sortrank" selected>--默认--</option>
+                        <option value="senddate">收录时间</option>
+                        <option value="pubdate">发布时间</option>
+                        <option value="id">文档ID</option>
+                      </select>
+                     <select  name="smallclass" style="display:none"  multiple="multiple" id="smallclass"></select>
+                </div>                
+            </div>
+    </div>
+      
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("RequiredFieldValidator1"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var RequiredFieldValidator1 = document.all ? document.all["RequiredFieldValidator1"] : document.getElementById("RequiredFieldValidator1");
+RequiredFieldValidator1.controltovalidate = "searchkeyword";
+RequiredFieldValidator1.errormessage = "关键字不能为空";
+RequiredFieldValidator1.display = "Dynamic";
+RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator1.initialvalue = "";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+  </div><!-- 1 container end -->
+<!-- 1 footer -->
+   <script type="text/javascript" >
+          $("#bigclass").change(function () {
+           if ($(this).val() == 0) {
+               $("#smallclass").empty();
+               $("#smallclass").hide();
+           }
+           else
+               $.ajax({
+                   type: "POST",
+                   url: "search.aspx/getSmall",
+                   data: "{'strNewsclassid':  " + $(this).val() + "}",
+                   contentType: "application/json; charset=utf-8",
+                   async: true,
+                   success: function (msg) {
+                       $("#smallclass").empty(); //清空列表
+                       $("#smallclass").show();
+                       if (msg.d != '')
+                           $("#smallclass").append(msg.d); //添加<option>选项
+                       else {
+                           $("#smallclass").hide();
+                       }
+                   }
+               });
+       });
+   </script>
+
+<div id="ft"> 
+  <!-- 链接 -->
+  
+  <!-- 页脚 -->
+<script src='/plus/mytag_js.php?aid=3' language='javascript'></script>
+<script src="/dedemao/js/v2/common.js"></script> 
+
+</body>
+</html>

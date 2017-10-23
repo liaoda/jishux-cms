@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hant">
+<head>
+    <meta charset="{dede:global.cfg_soft_lang/}">
+    <title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="{dede:field.keywords/}"/>
+    <meta name="description" content="{dede:field.description function='html2text(@me)'/}"/>
+    <meta name="MobileOptimized" content="240"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/favicon.ico">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="{dede:field.title/}_{dede:global.cfg_webname/}"/>
+    <link rel="apple-touch-icon-precomposed" href="/favicon.ico">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/favicon.ico">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="alternate icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="http://cdn.jishux.com/amazeui.min.css"/>
+    <link rel="stylesheet" href="http://cdn.jishux.com/css/app.css"/>
+    <link rel="stylesheet" href="http://cdn.jishux.com/jquery.fancybox.min.css" />
+
+    <style>
+        .qr-image{
+            visibility: hidden;
+            width: 12rem;
+            height: 12rem;
+            max-width: none;
+            margin-top: 4rem;
+            position: absolute;
+        }
+        .qr-image img,.qr-image a{
+            width: 100%;
+            height: auto;
+        }
+        .qr-share{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .am-icon-weixin:hover + .qr-image{
+            visibility: visible;
+        }
+        .article-share{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>{dede:include filename="header_m.htm"/}
+<div class="am-g am-g-fixed blog-g-fixed">
+    <div class="am-u-md-8">{dede:field name='position'/}</div>
+    <div class="am-u-md-8">
+        <article class="blog-main">
+            <h3 class="am-article-title blog-title">
+
+                {dede:field.title/}
+
+            </h3>
+            <h4 class="am-article-meta blog-meta">
+                <small>时间:</small>
+                {dede:field.pubdate function="GetDateMK(@me)"/}&nbsp;&nbsp;<small>来源:</small>
+                {dede:field.source/} &nbsp;&nbsp;<small>作者:</small>
+                {dede:field.writer/} &nbsp;&nbsp;<small>点击:</small>
+                <script src="{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}"
+                        type='text/javascript' language="javascript"></script>
+                次
+            </h4>
+            <div class="am-g blog-content" style='padding: 10px;'>
+                {dede:field.body/} {dede:field.vote/}
+                <div class="article-share">
+                    <strong > 责任编辑：{dede:adminname/}　　　　</strong>
+                    <strong  >二维码分享： </strong>
+                    <div class="qr-share">
+                        <a href="##" class="am-icon-btn am-icon-weixin"></a>
+                        <div class="qr-image">
+                            <img src="/plus/qrcode.php?action=get_qrcode&type=arc&id={dede:field.id/}" aid="{dede:field.id/}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="am-g" style="padding: 10px;"> <span>本文标签：
+
+{dede:field.id runphp='yes'}
+global $cfg_cmspath;
+$tags = GetTags(@me);
+$revalue = '';
+$tags = explode(',', $tags);
+foreach($tags as $key => $value){
+            if($value){
+                $revalue .= '<a href="'.$cfg_cmspath.'/tags.php?/'.$value.'/">'.$value.'</a>, ';
+   }
+  }
+@me = substr($revalue,0,-2);
+{/dede:field.id}
+                </span></div>
+            <ul>
+                <li>{dede:prenext get='pre'/}</li>
+                <li>{dede:prenext get='next'/}</li>
+            </ul>
+            <div class="dede_pages">
+                <ul data-am-widget="pagination" class="am-pagination am-pagination-default">{dede:pagebreak/}</ul>
+            </div>
+
+        </article>
+
+    </div>
+    <div class="am-u-md-4 blog-sidebar">
+        <div class="am-panel-group">
+            <section class="am-panel am-panel-default">
+                <div class="am-panel-hd">相关文章</div>
+                <ul class="am-list blog-list">
+                    {dede:likearticle row='10' titlelen='60'}
+                    <li><a href="[field:arcurl/]" title="[field:fulltitle/]">[field:title/]</a></li>
+                    {/dede:likearticle}
+                </ul>
+            </section>
+            <section class="am-panel am-panel-default">
+                <div class="am-panel-hd">最近关注</div>
+                <ul class="am-list blog-list">{dede:arclist row='5' orderby='pubdate' titlelen=60}
+                    <li><a href="[field:arcurl/]">[field:title/]</a>
+                    </li>
+                    {/dede:arclist}
+                </ul>
+            </section>
+            <section class="am-panel am-panel-default">
+                <div class="am-panel-hd">热点内容</div>
+                <ul class="am-list blog-list">{dede:arclist row='5' orderby='hot' titlelen=60}
+                    <li><a href="[field:arcurl/]">[field:title/]</a>
+                    </li>
+                    {/dede:arclist}
+                </ul>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+
+{dede:include filename="footer_m.htm"/}
+
+<script data-cfasync="true" src="http://cdn.jishux.com/jquery.min.js"></script>
+<script data-cfasync="true" src="http://cdn.jishux.com/amazeui.min.js"></script>
+<script data-cfasync="true" src="http://cdn.jishux.com/jquery.fancybox.min.js"></script>
+<script data-cfasync="true" src="http://cdn.jishux.com/article_lazy_load.js"></script>
+<script data-cfasync="true" type="text/javascript">
+    $(function () {
+        window.lazySizesConfig = window.lazySizesConfig || {};
+        window.lazySizesConfig.expand=-50;
+        var i = 1;
+        topbar = $(".am-topbar");
+        topbar.attr('i', '0');
+        $(window).scroll(function () {
+            var before = $(window).scrollTop();
+            $(window).scroll(function () {
+                var after = $(window).scrollTop();
+                if (before - after < -80) {
+                    //                         console.log('上');
+                    if (i === 1 ) {
+                        topbar.fadeOut();
+                        i = 0;
+                    }
+                    before = after;
+                }
+                if (before - after > 80) {
+                    if (i === 0 ) {
+                        topbar.fadeIn();
+                        i = 1;
+                    }
+                    before = after;
+                }
+            });
+        });
+    })
+</script>
+<script data-cfasync="true" src="http://cdn.jishux.com/lazysizes.min.js"></script>
+
+
+<style type="text/css">
+    #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main{  background:none;  }
+    #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw {
+        background-image:url("http://cdn.jishux.com/post-btn.png");
+    }
+    #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw:hover{
+        background-image:url("http://cdn.jishux.com/post-btn-on.png");
+    }
+    #SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w .service-wrap-w a{
+        display:none !important;
+    }
+</style>
+</body>
+
+</html>

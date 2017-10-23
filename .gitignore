@@ -1,0 +1,24 @@
+# Other
+.DS_Store
+
+# dedecms
+install/
+uploads/
+data/
+news/*.html
+dedemao/
+special/
+qianduan/
+houduan/
+sitemap/
+
+# log
+*.log
+*.tmp
+
+# idea
+.idea/
+
+.well-known/
+
+*.txt

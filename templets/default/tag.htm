@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hant">
+<head >
+	<meta charset="{dede:global.cfg_soft_lang/}">
+	<title>{dede:global.cfg_webname/} - 中国领先的IT技术门户</title>
+	<meta name="keywords" content="技术新闻,软件,网址,专题,投稿,网络,系统应用,网络安全,网络编程,存储备份,操作系统,数据库,案例库,路由器,交换机,防火墙,服务器,局域网,DB2,Oracle,C++,JAVA,EBA,linux,Java,安全,漏洞,病毒,网络人物,网络编程,网络安全,操作系统,数据库,设备采购,职场学习"/>
+	<meta name="description" content="技术栈(www.jishux.com)是中国领先的IT技术网站。网站致力于IT网络技术，it新闻，网站建设、脚本编程学习，提供技术新闻,职场培训,IT技术博客,软件,辞典,网址,专题,投稿,网络,系统应用,网络安全,网络人物,网管入门,网络编程,系统构建,网络安全,操作系统,数据库,职场学习等编程资料，为您提供从基础到高端的信息技术学习平台。"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" sizes="192x192" href="/favicon.ico">
+	<meta name="theme-color" content="#0e90d2">
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="{dede:global.cfg_webname/}"/>
+	<link rel="apple-touch-icon-precomposed" href="/favicon.ico">
+	<link rel="alternate icon" type="image/png" href="/favicon.ico">
+	<link rel="stylesheet" href="http://cdn.jishux.com/amazeui.min.css" />
+	<link rel="stylesheet" href="http://cdn.jishux.com/css/app.css" />
+	<style>
+		@media only screen and (min-width: 1200px) {
+			.blog-g-fixed {
+				max-width: 1200px;
+				min-height: 70vh;
+			}
+		}
+		.tagc1{
+			font-size:12px;
+			color:#666;
+		}
+		.tagc2{
+			font-size:14px;
+			font-weight:bold;
+			color:#555;
+		}
+		.blog-footer {
+			padding: 10px 0;
+			text-align: center;
+			background-color: #f8f8f8;
+			border-width: 1px 0 0;
+			border-style: solid;
+			border-color: #ddd;
+		}
+		.cnzz {
+			display: inline;
+		}
+		.police {
+			background: url(http://www.jishux.com/images/icon-police.png) 0 0 no-repeat;
+			display: inline-block;
+			width: 14px;
+			height: 16px;
+			margin-right: 6px;
+		}
+	</style>
+</head>
+<body >
+{dede:include filename="header_m.htm"/}
+<!-- /header -->
+
+<div class="am-g am-g-fixed blog-g-fixed">
+	<h2 style="margin:0 1rem">TAG标签</h2>
+
+	<div class="am-list-news am-list-news-default">
+		<dl class="am-cf">
+			<h3>最新标签</h3>
+			<div class="am-u-md-12">
+            {dede:tag row='60' sort='new'}
+            <a href='[field:link/]' class='tagc[field:highlight /]'>[field:tag /]</a>
+            {/dede:tag}
+			</div>
+		</dl>
+	</div>
+	
+	<div class="am-list-news am-list-news-default">
+		<dl class="am-cf">
+			<h3>当月热门标签</h3>
+			<div class="am-u-md-12">
+            {dede:tag row='60' sort='month'}
+            <a href='[field:link/]' class='tagc[field:highlight /]'>[field:tag /]</a>
+            {/dede:tag}
+			</div>
+		</dl>
+	</div>
+	
+	<div class="am-list-news am-list-news-default">
+		<dl class="am-cf">
+			<h3>随机标签</h3>
+			<div class="am-u-md-12">
+            {dede:tag row='100' sort='rand'}
+            <a href='[field:link/]' class='tagc[field:highlight /]'>[field:tag /]</a>
+            {/dede:tag}
+			</div>
+		</dl>
+	</div>
+</div>
+{dede:include filename="footer_m.htm"/}
+<!-- /footer -->
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="http://cdn.jishux.com/polyfill/rem.min.js"></script>
+<script src="http://cdn.jishux.com/polyfill/respond.min.js"></script>
+<script src="http://cdn.jishux.com/amazeui.legacy.js"></script>
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]>
+    <!-->
+<script src="http://cdn.jishux.com/jquery.min.js"></script>
+<script src="http://cdn.jishux.com/amazeui.min.js"></script>
+<!--<![endif]-->
+</body>
+</html>

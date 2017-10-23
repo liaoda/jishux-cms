@@ -1,0 +1,17 @@
+<div id="Reply<?php echo $row['id']; ?>" style="display: block;">  <div class="reply_post_comment">	<a onclick="CloseReplay(<?php echo $row['id']; ?>)" class="close_comm" href="javascript:void(0)"></a> 
+        <form action="feedback.php" method="post" name="ajaxfeedback_<?php echo $row['id']; ?>" id="ajaxfeedback_<?php echo $row['id']; ?>">
+          <input type="hidden" name="action" value="send" />
+            <input type="hidden" name="comtype" value="reply" />
+            <input type="hidden" name="fid" value="<?php echo $row['id']; ?>" />
+            <input type="hidden" name="isconfirm" value="yes" />
+            <input type="hidden" name="typeid" value="<?php echo $row['typeid'];?>" />      
+            <input type="hidden" name="feedbacktype" value="feedback" />
+<input type="hidden" name="notuser" id="dcmp-submit-guest" />            
+			<input type="hidden" name="quotemsg" value="{quote}<?php echo '{title}'.$row['username'].' 的原帖：{/title}'.'{content}'.$row['msg'].'{/content}';?>{/quote}" />             
+ <div class="add_comm">  <textarea onfocus="this.value=''; this.onfocus=null;" class="ipt-txt" rows="5" cols="60" id="msg_<?php echo $row['id']; ?>" name="msg">有您参与更精彩！</textarea>  <div class="comm-con"><span>签名：</span>    <input type="text" onblur="if(this.value=='')this.value='匿名';" onfocus="if(this.value=='匿名')this.value='';" value="匿名" class="ipt-txt" size="36" id="username" name="username">  </div>  
+ 
+ <input type="button" class="button" id="btnComment" onClick='javascript:if(document.getElementById("msg_<?php echo $row['id']; ?>").value!="有您参与更精彩！") ajaxQuotePost(<?php echo $row['id']; ?>); else alert("请填写评论内容！");' value="发表评论" name="btnComment">  
+
+ <span style="color:red;"></span>  </div>
+ </form>
+ </div></div>
