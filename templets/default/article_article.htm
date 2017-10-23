@@ -93,7 +93,7 @@
                 </div>
 
             </div>
-            <div class="am-g" style="padding: 10px;"> <div class="am-u-md-6">本文标签：
+            <div class="am-g" style="padding: 10px;"> <div class="am-u-md-12">本文标签：
 
 {dede:field.id runphp='yes'}
 global $cfg_cmspath;
@@ -108,13 +108,15 @@ foreach($tags as $key => $value){
 @me = substr($revalue,0,-2);
 {/dede:field.id}
                 </div>
-                <div class="am-u-md-6">
-                    <button id="btn-like" class="am-btn am-round am-btn-danger am-btn-default am-btn-sm">
-                        <i class="am-icon-heart-o"> 喜欢 </i>
-                        <span id="like-count"></span>
-                    </button>
 
-                </div>
+            </div>
+
+            <div class="am-u-md-12">
+                <button id="btn-like" class="am-btn am-round am-btn-danger am-btn-default am-btn-sm">
+                    <i class="am-icon-heart-o"> 喜欢 </i>
+                    <span id="like-count"></span>
+                </button>
+
             </div>
 
             <ul class="am-u-md-12">
