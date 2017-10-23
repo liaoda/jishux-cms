@@ -100,10 +100,11 @@ global $cfg_cmspath;
 $tags = GetTags(@me);
 $revalue = '';
 $tags = explode(',', $tags);
-foreach($tags as $value){
-            if($value){
-                $revalue .= '<a href="'.$cfg_cmspath.'/tags.php?/'.$value.'/">'.$value.'</a>, ';
-   }
+<!--foreach($tags as $value){-->
+            <!--if($value){-->
+                <!--$revalue .= '<a href="'.$cfg_cmspath.'/tags.php?/'.$value.'/">'.$value.'</a>, ';-->
+   <!--}-->
+  $revalue = $tags[0]
   }
 @me = substr($revalue,0,-3);
 {/dede:field.id}
