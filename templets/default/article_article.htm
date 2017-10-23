@@ -211,7 +211,7 @@ foreach($tags as $key => $value){
     function postGood()
     {
         var saveid = Cookies.get('diggid');
-        if(saveid !== null)
+        if(saveid)
         {
             console.log(saveid)
             var saveids = saveid.split(',');
