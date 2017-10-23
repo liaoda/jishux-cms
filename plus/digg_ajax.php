@@ -86,6 +86,7 @@ if(empty($formurl)) $formurl = '';
 if($formurl=='caicai')
 {
     if($action == 'good') $digg = $row['goodpost'];
+    if($action == 'num') $digg = $row['goodpost'];
     if($action == 'bad') $digg  = $row['badpost'];
 }
 else
