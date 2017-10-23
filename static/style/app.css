@@ -7,7 +7,7 @@ li.hover a {color: #0e90d2;}
 .am-u-md-6 {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 @media only screen and (max-width: 640px){.intro{display: none} .am-list-news.am-u-md-6.am-no-layout{padding: 0}}
 @media only screen and (min-width: 641px) { .blog-sidebar { font-size: 1.4rem; } }
-@media only screen and (min-width: 1200px) { .blog-g-fixed {  max-width: 1200px;  }  }
+/*@media only screen and (min-width: 1200px) { .blog-g-fixed {  max-width: 1200px;  }  }*/
 .lazyload,.lazyloading {opacity: .4;}
 .lazyloaded {opacity: 1;transition: opacity 300ms;}
 .blog-footer {padding: 10px 0;text-align: center;background-color: #f8f8f8;border-width: 1px 0 0;border-style: solid;border-color: #ddd;}
