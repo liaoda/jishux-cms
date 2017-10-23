@@ -213,6 +213,7 @@ foreach($tags as $key => $value){
         var saveid = Cookies.get('diggid');
         if(saveid !== null)
         {
+            console.log(saveid)
             var saveids = saveid.split(',');
             var hasid = false;
             saveid = '';
