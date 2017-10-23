@@ -93,7 +93,7 @@
                 </div>
 
             </div>
-            <div class="am-g" style="padding: 10px;"> <div class="am-u-md-12">本文标签：
+            <div class="am-g" style="padding: 10px;"> <div >本文标签：
 
 {dede:field.id runphp='yes'}
 global $cfg_cmspath;
@@ -111,7 +111,7 @@ foreach($tags as $key => $value){
 
             </div>
 
-            <div class="am-u-md-12">
+            <div class="am-g" style="padding: 10px;">
                 <button id="btn-like" class="am-btn am-round am-btn-danger am-btn-default am-btn-sm">
                     <i class="am-icon-heart-o"> 喜欢 </i>
                     <span id="like-count"></span>
@@ -119,7 +119,7 @@ foreach($tags as $key => $value){
 
             </div>
 
-            <ul class="am-u-md-12">
+            <ul class="am-g" style="padding: 10px;">
                 <li>{dede:prenext get='pre'/}</li>
                 <li>{dede:prenext get='next'/}</li>
             </ul>
