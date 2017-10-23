@@ -93,7 +93,7 @@
                 </div>
 
             </div>
-            <div class="am-g" style="padding: 10px;"> <span>本文标签：
+            <div class="am-g" style="padding: 10px;"> <div class="am-u-md-6">本文标签：
 
 {dede:field.id runphp='yes'}
 global $cfg_cmspath;
@@ -107,19 +107,21 @@ foreach($tags as $key => $value){
   }
 @me = substr($revalue,0,-2);
 {/dede:field.id}
-                </span></div>
+                </div>
+                <div class="am-u-md-6">
+                    <button id="btn-like" class="am-icon-btn am-icon-heart-o am-icon-warning"></button>
+                    <span id="like-count"></span>
+                </div>
+            </div>
 
-            <ul>
+            <ul class="am-u-md-12">
                 <li>{dede:prenext get='pre'/}</li>
                 <li>{dede:prenext get='next'/}</li>
             </ul>
             <div class="dede_pages">
                 <ul data-am-widget="pagination" class="am-pagination am-pagination-default">{dede:pagebreak/}</ul>
             </div>
-            <div>
-                <button id="btn-like" class="am-icon-btn am-icon-heart-o am-icon-warning"></button>
-                <span id="like-count"></span>
-            </div>
+
 
         </article>
 
