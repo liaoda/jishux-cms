@@ -102,8 +102,7 @@ $revalue = '';
 $tags = explode(',', $tags);
 foreach($tags as $value){
             if($value){
-                <!--$revalue .= '<a href="'.$cfg_cmspath.'/tags.php?/'.$value.'/">'.$value.'</a>, ';-->
-                $revalue .= $value;
+                $revalue .= '.$cfg_cmspath.'/tags.php?/'.$value.'';
    }
   }
 @me = substr($revalue,0,-3);
