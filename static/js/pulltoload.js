@@ -46,7 +46,8 @@ $(function () {
         }
     }
     function addContent (rs){
-        if(rs.statu== 1){
+        if(rs.statu=== 1){
+            console.log('success')
             var data = rs.list;
             var total = rs.total;
             var arr=[];
