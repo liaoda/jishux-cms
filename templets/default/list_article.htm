@@ -116,19 +116,19 @@
             var pagesize = loadConfig.pagesize;
             var url = loadConfig.url_api,data={ajax:'pullload',typeid:typeid,page:page,pagesize:pagesize};
             var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
-            console.log(dHeight);
-            console.log(cHeight);
-            console.log(sTop);
 
             if (sTop + cHeight >= dHeight) {
-                loadConfig.loading = 1;
-                function ajax(url, data) {
+                $.AMUI.progress.start();
+                setTimeout(function () {
+                    loadConfig.loading = 1;
+                    function ajax(url, data) {
 
-                    $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
-                        addContent(data);
-                    }});
-                }
-                ajax(url,data);
+                        $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
+                            addContent(data);
+                        }});
+                    }
+                    ajax(url,data);
+                },500)
             }
         }
     }
@@ -180,6 +180,7 @@
             }
             loadConfig.page++;
             loadConfig.loading = 0;
+            $.AMUI.progress.done();
         }
     }
     function pullLoad(){
