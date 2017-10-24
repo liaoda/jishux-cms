@@ -34,7 +34,7 @@ $(function () {
             var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
 
             if (sTop + cHeight >= dHeight-20) {
-                // $.AMUI.progress.start();
+                $.AMUI.progress.start();
                 loadConfig.loading = 1;
                 list.append(footer)
                 function ajax(url, data) {
@@ -64,7 +64,7 @@ $(function () {
             }
             loadConfig.page++;
             loadConfig.loading = 0;
-            // $.AMUI.progress.done();
+            $.AMUI.progress.done();
         }
     }
     function pullLoad(){
