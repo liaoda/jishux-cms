@@ -137,38 +137,39 @@
             var arr=[];
             var length = data.length;
             for(var i=0;i<length;i++){
-                var article_class_name = 'am-u-sm-12 am-list-main';
-                var data_src = "/images/default_pic.png"
-                var img_class = 'am-img-responsive'
-                if (data[i].picname !== "/images/default_pic.png") {
-                    var url = data[i].picname
-                    if (url.endsWith('_.jpg')) { url = url.substring(0, url.length - 5) + '/thumb'; }
-                    data_src = url
-                    img_class = 'am-img-responsive lazyload'
-                    article_class_name = 'am-u-sm-9 am-list-main'
-                }
-                arr.push('<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">');
-                arr.push('<div class="am-u-sm-3 am-list-thumb">');
-                arr.push('<a href="'+data[i].arcurl+'" title="'+data[i].title+'">');
-                if(data[i].picname !== "/images/default_pic.png"){
-                    arr.push('<img src="http://cdn.jishux.com/default_pic_thumb.png" data-src="'+data_src+'" class="'+img_class+'">');
-                }else{
-                    arr.push('<img data-src="'+data_src+'" class="'+img_class+'">');
-                }
-                arr.push('</a>');
-                arr.push('</div>');
-                arr.push('<div class="'+article_class_name+'">');
-                arr.push('<h3 class="am-list-item-hd">');
-                arr.push(' <a href="'+data[i].arcurl+'" class="">"'+data[i].title+'"</a>');
-                arr.push('</h3>');
-                arr.push('<div class="am-list-item-text">');
-                arr.push('<span class="am-icon-server">'+ data[i].source+' · </span>');
-                arr.push(' <span class="am-icon-calendar">'+ data[i].stime +'· </span>');
-                arr.push('<span class="am-icon-eye">'+ data[i].click +' </span>');
-                arr.push('</div>');
-                arr.push('<p class="am-list-item-text">'+data[i].description+'...</p>');
-                arr.push('</div>');
-                arr.push('</li>');
+//                var article_class_name = 'am-u-sm-12 am-list-main';
+//                var data_src = "/images/default_pic.png"
+//                var img_class = 'am-img-responsive'
+//                if (data[i].picname !== "/images/default_pic.png") {
+//                    var url = data[i].picname
+//                    if (url.endsWith('_.jpg')) { url = url.substring(0, url.length - 5) + '/thumb'; }
+//                    data_src = url
+//                    img_class = 'am-img-responsive lazyload'
+//                    article_class_name = 'am-u-sm-9 am-list-main'
+//                }
+//                arr.push('<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">');
+//                arr.push('<div class="am-u-sm-3 am-list-thumb">');
+//                arr.push('<a href="'+data[i].arcurl+'" title="'+data[i].title+'">');
+//                if(data[i].picname !== "/images/default_pic.png"){
+//                    arr.push('<img src="http://cdn.jishux.com/default_pic_thumb.png" data-src="'+data_src+'" class="'+img_class+'">');
+//                }else{
+//                    arr.push('<img data-src="'+data_src+'" class="'+img_class+'">');
+//                }
+//                arr.push('</a>');
+//                arr.push('</div>');
+//                arr.push('<div class="'+article_class_name+'">');
+//                arr.push('<h3 class="am-list-item-hd">');
+//                arr.push(' <a href="'+data[i].arcurl+'" class="">"'+data[i].title+'"</a>');
+//                arr.push('</h3>');
+//                arr.push('<div class="am-list-item-text">');
+//                arr.push('<span class="am-icon-server">'+ data[i].source+' · </span>');
+//                arr.push(' <span class="am-icon-calendar">'+ data[i].stime +'· </span>');
+//                arr.push('<span class="am-icon-eye">'+ data[i].click +' </span>');
+//                arr.push('</div>');
+//                arr.push('<p class="am-list-item-text">'+data[i].description+'...</p>');
+//                arr.push('</div>');
+//                arr.push('</li>');
+                arr.push(data[i])
             }
             $('.am-list-news-bd>.am-list').append(arr.join(''));
             loadConfig.load_num = rs.load_num;
