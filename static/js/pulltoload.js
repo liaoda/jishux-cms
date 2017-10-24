@@ -37,7 +37,7 @@ $(function () {
                 loadConfig.loading = 1;
                 list.append(footer)
                 function ajax(url, data) {
-                    $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
+                    $.ajax({url: url,data: data,async: true,type: 'GET',dataType: 'json',success: function(data) {
                         addContent(data);
                     }});
                 }
