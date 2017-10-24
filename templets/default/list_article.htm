@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>{dede:include filename="header_m.htm"/}
-<div class="am-g am-g-fixed blog-g-fixed" aid="{dede:field name='typeid'/}">
+<div class="am-g am-g-fixed blog-g-fixed" tid="{dede:field name='typeid'/}">
     <div class="am-u-md-8">
         <div data-am-widget="list_news" class="am-list-news am-list-news-default">
             <!--列表标题-->
@@ -100,59 +100,7 @@
 <script data-cfasync="true" src="http://cdn.jishux.com/amazeui.min.js"></script>
 <script data-cfasync="true" src="http://cdn.jishux.com/list_article.js"></script>
 <script data-cfasync="true" src="http://cdn.jishux.com/lazysizes.min.js"></script>
-<script type="text/javascript">
-    var loadConfig = {
-        url_api:'/plus/list.php',
-        typeid:{dede:field name="typeid"/},
-        page:2,
-        pagesize:15,  //这个就是滑动一次添加几条信息的参数设置
-        loading : 0,
-    };
-    window.loadConfig= loadConfig;
-    function  loadMoreApply(){
-        if(loadConfig.loading === 0){
-            var typeid = loadConfig.typeid;
-            var page = loadConfig.page;
-            var pagesize = loadConfig.pagesize;
-            var url = loadConfig.url_api,data={ajax:'pullload',typeid:typeid,page:page,pagesize:pagesize};
-            var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
-
-            if (sTop + cHeight >= dHeight-20) {
-                $.AMUI.progress.start();
-                loadConfig.loading = 1;
-                function ajax(url, data) {
-                    $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
-                        addContent(data);
-                    }});
-                }
-                ajax(url,data);
-            }
-        }
-    }
-    function addContent (rs){
-        if(rs.statu== 1){
-            var data = rs.list;
-            var total = rs.total;
-            var arr=[];
-            var length = data.length;
-            for(var i=0;i<length;i++){
-                arr.push(data[i])
-            }
-            $('.am-list-news-bd>.am-list').append(arr.join(''));
-            loadConfig.load_num = rs.load_num;
-            if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
-                window.removeEventListener('srcoll',loadMoreApply,false);
-            }
-            loadConfig.page++;
-            loadConfig.loading = 0;
-            $.AMUI.progress.done();
-        }
-    }
-    function pullLoad(){
-        window.addEventListener('scroll', loadMoreApply, false);
-    }
-    pullLoad();
-</script>
+<script type="text/javascript" src="/static/js/pulltoload.js"></script>
 </body>
 
 </html>
