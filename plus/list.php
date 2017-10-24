@@ -14,8 +14,9 @@ require_once(dirname(__FILE__)."/../include/common.inc.php");
 //$t1 = ExecTime();
 //列表页瀑布流无限加载代码
 if(isset($_GET['ajax'])){
+
     if (!$_SERVER['HTTP_REFERER'] || !$_SERVER['HTTP_USER_AGENT']){
-        echo 'nothing support';
+        echo 'warning:your ip was added in blacklist';
         exit();
     }
     $typeid = isset($_GET['typeid']) ? intval($_GET['typeid']): 0;//传递过来的分类ID
@@ -39,31 +40,81 @@ if(isset($_GET['ajax'])){
     $statu = 0;//是否有数据，默认没有数据
     $data = array();
     $index = 0;
-    while($row = $dsql->GetArray("list")){
-        $row['info'] = $row['info'] = $row['infos'] = cn_substr($row['description'],160);
-        $row['id'] =  $row['id'];
+    while($row = $dsql->GetArray("list")) {
+        $row['info'] = $row['info'] = $row['infos'] = cn_substr($row['description'], 160);
+        $row['id'] = $row['id'];
         $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'],
-            $row['typeid'],$row['senddate'],$row['title'],$row['ismake'],
-            $row['arcrank'],$row['namerule'],$row['typedir'],$row['money'],
-            $row['filename'],$row['moresite'],$row['siteurl'],$row['sitepath']);
-        $row['typeurl'] = GetTypeUrl($row['typeid'],$row['typedir'],
-            $row['isdefault'],$row['defaultname'],$row['ispart'],
-            $row['namerule2'],$row['moresite'],$row['siteurl'],$row['sitepath']);
-        if($row['litpic'] == '-' || $row['litpic'] == ''){
-            $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/default_pic.png';
+            $row['typeid'], $row['senddate'], $row['title'], $row['ismake'],
+            $row['arcrank'], $row['namerule'], $row['typedir'], $row['money'],
+            $row['filename'], $row['moresite'], $row['siteurl'], $row['sitepath']);
+        $row['typeurl'] = GetTypeUrl($row['typeid'], $row['typedir'],
+            $row['isdefault'], $row['defaultname'], $row['ispart'],
+            $row['namerule2'], $row['moresite'], $row['siteurl'], $row['sitepath']);
+        if ($row['litpic'] == '-' || $row['litpic'] == '') {
+//            $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/default_pic.png';
+            $row['litpic'] = '';
         }
-        if(!preg_match("#^http:\/\/#i", $row['litpic']) &&$GLOBALS['cfg_multi_site'] == 'Y'){
-            $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
+        if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
+            $row['litpic'] = $GLOBALS['cfg_mainsite'] . $row['litpic'];
         }
         $row['picname'] = $row['litpic'];//缩略图
-        //$row['stime'] = GetDateMK($row['pubdate']);
-        $row['stime'] = date('Y-m-d H:i', $row['pubdate']);
+        $row['stime'] = GetDateMK($row['pubdate']);
+//        $row['stime'] = date('Y-m-d H:i', $row['pubdate']);
         $row['click'] = $row['click'];
-        $row['typelink'] = "".$row['typename']."";//分类链
+        $row['typelink'] = "" . $row['typename'] . "";//分类链
         $row['fulltitle'] = $row['title'];//完整的标题
         $row['shorttitle'] = $row['shorttitle'];//副标题
         $row['title'] = cn_substr($row['title'], 80);//截取后的标题
-        $data[$index] = $row;
+
+
+         $article_class_name = 'am-u-sm-12 am-list-main';
+         $data_src = "/images/default_pic.png";
+         $img_class = 'am-img-responsive';
+
+
+         $html_str = '';
+
+        if ($row['picname']){
+             $url = $row['picname'];
+                    if ($url) {
+                        $url =substr($url,0,strlen($url)-5).'/thumb';
+                    }
+                    $data_src = $url;
+                    $img_class = 'am-img-responsive lazyload';
+                    $article_class_name = 'am-u-sm-9 am-list-main';
+        }
+        $html_str.= '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">';
+        $html_str.= '<div class="am-u-sm-3 am-list-thumb">';
+        $html_str.= '<a href="'.$row['arcurl'].'" title="'.$row['title'].'">';
+        if($row['picname']){
+            $html_str.= '<img src="http://cdn.jishux.com/default_pic_thumb.png" data-src="'.$data_src.'" class="'.$img_class.'">';
+        }else{
+            $html_str.= '<img data-src="'.$data_src.'" class="'.$img_class.'">';
+        }
+        $html_str.= '</a>';
+        $html_str.= '</div>';
+        $html_str.= '<div class="'.$article_class_name.'">';
+        $html_str.= '<h3 class="am-list-item-hd">';
+        $html_str.= ' <a href="'.$row['arcurl'].'" class="">"'.$row['title'].'"</a>';
+        $html_str.= '</h3>';
+        $html_str.= '<div class="am-list-item-text">';
+        $html_str.= '<span class="am-icon-server">'.$row['source'].' · </span>';
+        $html_str.= ' <span class="am-icon-calendar">'. $row['stime'] .'· </span>';
+        $html_str.= '<span class="am-icon-eye">'. $row['click'] .' </span>';
+        $html_str.= '</div>';
+        $html_str.= '<p class="am-list-item-text">'.$row['description'].'...</p>';
+        $html_str.= '</div>';
+        $html_str.= '</li>';
+
+
+
+
+
+
+        
+        
+//        $data[$index] = $row;
+        $data[$index] = $html_str;
         $index++;
     }
     if(!empty($data)){
