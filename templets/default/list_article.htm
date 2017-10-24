@@ -117,11 +117,10 @@
             var url = loadConfig.url_api,data={ajax:'pullload',typeid:typeid,page:page,pagesize:pagesize};
             var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
 
-            if (sTop + cHeight >= dHeight) {
+            if (sTop + cHeight >= dHeight-cHeight*0.1) {
                 $.AMUI.progress.start();
                 loadConfig.loading = 1;
                 function ajax(url, data) {
-
                     $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
                         addContent(data);
                     }});
