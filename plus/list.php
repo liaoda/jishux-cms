@@ -93,6 +93,7 @@ if(isset($_GET['ajax'])){
         $html_str.= '<div class="am-list-item-text">';
         $html_str.= '<span class="am-icon-server"> '.$row['source'].' · </span>';
         $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
+        $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
         $html_str.= '<span class="am-icon-eye"> '. $row['click'] .' </span>';
         $html_str.= '</div>';
         $html_str.= '<p class="am-list-item-text">'.$row['description'].'...</p>';
