@@ -1,6 +1,6 @@
 $(function () {
     var list = $('.am-list-news-bd>.am-list')
-    var footer ='<li style="display: none" class="load-more am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
+    var footer ='<li  class="load-more am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
         '                        <div class="am-u-sm-3 am-list-thumb">\n' +
         '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
         '\n' +
@@ -17,7 +17,6 @@ $(function () {
         '                            <p class="am-list-item-text" style="background-color: lightgrey">...</p>\n' +
         '                        </div>\n' +
         '                    </li>'
-    var loadmore = $('.load-more')
     var loadConfig = {
         url_api:'/plus/list.php',
         typeid: $('.blog-g-fixed').attr('tid'),
@@ -55,7 +54,7 @@ $(function () {
             for(var i=0;i<length;i++){
                 arr.push(data[i])
             }
-            $('.am-list-news-bd>.am-list>li').eq(-1).remove()
+            $('.am-list-news-bd>.am-list>li').eq(-1).remove();
             list.append(arr.join(''));
             loadConfig.load_num = rs.load_num;
             if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
