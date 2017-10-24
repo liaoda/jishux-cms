@@ -7,7 +7,6 @@ $(function () {
         pagesize:15,  //这个就是滑动一次添加几条信息的参数设置
         loading : 0,
     };
-    window.loadConfig= loadConfig;
     function  loadMoreApply(){
         if(loadConfig.loading === 0){
             var typeid = loadConfig.typeid;
@@ -19,7 +18,7 @@ $(function () {
             if (sTop + cHeight >= dHeight-20) {
                 $.AMUI.progress.start();
                 loadConfig.loading = 1;
-                loadmore.show()
+                loadmore.css('display','block')
                 function ajax(url, data) {
                     $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
                         addContent(data);
@@ -45,7 +44,7 @@ $(function () {
             }
             loadConfig.page++;
             loadConfig.loading = 0;
-            loadmore.hide()
+            loadmore.css('display','none')
             $.AMUI.progress.done();
         }
     }
