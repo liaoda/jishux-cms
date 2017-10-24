@@ -117,6 +117,8 @@
             var url = loadConfig.url_api,data={ajax:'pullload',typeid:typeid,page:page,pagesize:pagesize};
             var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
             console.log(dHeight);
+            console.log(cHeight);
+            console.log(sTop);
 
             if (sTop + cHeight >= dHeight - cHeight) {
                 loadConfig.loading = 1;
