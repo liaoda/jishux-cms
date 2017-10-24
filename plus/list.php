@@ -12,6 +12,63 @@
 require_once(dirname(__FILE__)."/../include/common.inc.php");
 
 //$t1 = ExecTime();
+//列表页瀑布流无限加载代码
+if(isset($_GET['ajax'])){
+    $typeid = isset($_GET['typeid']) ? intval($_GET['typeid']): 0;//传递过来的分类ID
+    $page = isset($_GET['page']) ? intval($_GET['page']): 0;//页码
+    $pagesize = isset($_GET['pagesize']) ? intval($_GET['pagesize']): 15;//每页多少条，也就是一次加载多少条数据
+    $start = $page>0 ? ($page-1)*$pagesize : 0;//数据获取的起始位置。即limit条件的第一个参数。
+    $typesql = $typeid ? " WHERE typeid=$typeid" : '';//这个是用于首页实现瀑布流加载，因为首页加载数据是无需分类的，所以要加以判断，如果无需
+    $total_sql = "SELECT COUNT(id) as num FROM `#@__archives` $typesql ";
+    $temp = $dsql->GetOne($total_sql);
+    $total = 0;//数据总数
+    $load_num =0;
+    if(is_array($temp)){
+        $load_num= round(($temp['num']-15)/$pagesize);//要加载的次数,因为默认已经加载了
+        $total = $temp['num'];
+    }
+    $sql = "SELECT a.*,t.typedir,t.typename,t.isdefault,t.defaultname,t.namerule,
+    t.namerule2,t.ispart, t.moresite,t.siteurl,t.sitepath
+    FROM `#@__archives` as a JOIN `#@__arctype` AS t ON a.typeid=t.id $typesql ORDER BY id DESC LIMIT $start,$pagesize";
+    $dsql->SetQuery($sql);
+    $dsql->Execute('list');
+    $statu = 0;//是否有数据，默认没有数据
+    $data = array();
+    $index = 0;
+    while($row = $dsql->GetArray("list")){
+        $row['info'] = $row['info'] = $row['infos'] = cn_substr($row['description'],160);
+        $row['id'] =  $row['id'];
+        $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'],
+            $row['typeid'],$row['senddate'],$row['title'],$row['ismake'],
+            $row['arcrank'],$row['namerule'],$row['typedir'],$row['money'],
+            $row['filename'],$row['moresite'],$row['siteurl'],$row['sitepath']);
+        $row['typeurl'] = GetTypeUrl($row['typeid'],$row['typedir'],
+            $row['isdefault'],$row['defaultname'],$row['ispart'],
+            $row['namerule2'],$row['moresite'],$row['siteurl'],$row['sitepath']);
+        if($row['litpic'] == '-' || $row['litpic'] == ''){
+            $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/defaultpic.gif';
+        }
+        if(!preg_match("#^http:\/\/#i", $row['litpic']) &&$GLOBALS['cfg_multi_site'] == 'Y'){
+            $row['litpic'] = $GLOBALS['cfg_mainsite'].$row['litpic'];
+        }
+        $row['picname'] = $row['litpic'];//缩略图
+        //$row['stime'] = GetDateMK($row['pubdate']);
+        $row['stime'] = date('Y-m-d H:i', $row['pubdate']);
+        $row['click'] = $row['click'];
+        $row['typelink'] = "".$row['typename']."";//分类链
+        $row['fulltitle'] = $row['title'];//完整的标题
+        $row['shorttitle'] = $row['shorttitle'];//副标题
+        $row['title'] = cn_substr($row['title'], 80);//截取后的标题
+        $data[$index] = $row;
+        $index++;
+    }
+    if(!empty($data)){
+        $statu = 1;//有数据
+    }
+    $result =array('statu'=>$statu,'list'=>$data,'total'=>$total,'load_num'=>$load_num);
+    echo json_encode($result);//返回数据
+    exit();
+}
 
 $tid = (isset($tid) && is_numeric($tid) ? $tid : 0);
 

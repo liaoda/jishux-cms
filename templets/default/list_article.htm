@@ -93,6 +93,74 @@
 <script data-cfasync="true" src="http://cdn.jishux.com/amazeui.min.js"></script>
 <script data-cfasync="true" src="http://cdn.jishux.com/list_article.js"></script>
 <script data-cfasync="true" src="http://cdn.jishux.com/lazysizes.min.js"></script>
+<script type="text/javascript">
+    var loadConfig = {
+        url_api:'/plus/list.php',
+        typeid:{dede:field name="typeid"/},
+        page:2,
+        pagesize:15,  //这个就是滑动一次添加几条信息的参数设置
+        loading : 0,
+    }
+    function  loadMoreApply(){
+        if(loadConfig.loading == 0){
+            var typeid = loadConfig.typeid;
+            var page = loadConfig.page;
+            var pagesize = loadConfig.pagesize;
+            var url = loadConfig.url_api,data={ajax:'pullload',typeid:typeid,page:page,pagesize:pagesize};
+            var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
+            console.log(dHeight);
+
+            if (sTop + cHeight >= dHeight - cHeight) {
+                loadConfig.loading = 1;
+                function ajax(url, data) {
+
+                    $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
+                        addContent(data);
+                    }});
+                }
+                ajax(url,data);
+            }
+        }
+    }
+    function addContent (rs){
+        if(rs.statu== 1){
+            var data = rs.list;
+            var total = rs.total;
+            var arr=[];
+            var length = data.length;
+            for(var i=0;i<length;i++){
+                arr.push('<a href="'+data[i].arcurl+'" title="'+data[i].title+'">');
+                arr.push('<dl class="yz_card">');
+                arr.push('<dt class="yz_card_dt">');
+                arr.push('<img src="'+data[i].picname+'" alt="'+data[i].title+'">');
+                arr.push('</dt>');
+                arr.push('<dd class="yz_card_dd">');
+                arr.push('<p class="yz_card_p">'+data[i].title+'</p>');
+                arr.push('<div class="yz_card_icon">');
+                arr.push('<span class="yz_comment">');
+                arr.push(data[i].click);
+                arr.push('<em class="yz_icon_comment"><img src="/templets/default/images/pingluan.png" height="14"></em>');
+                arr.push('</span>');
+                arr.push('</div>');
+                arr.push('<div class="yz_datetime">'+data[i].stime+'</div>');
+                arr.push('</dd>');
+                arr.push('</dl>');
+                arr.push('</a>');
+            }
+            $('.am-list').append(arr.join(''));
+            loadConfig.load_num = rs.load_num;
+            if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
+                window.removeEventListener('srcoll',loadMoreApply,false);
+            }
+            loadConfig.page++;
+            loadConfig.loading = 0;
+        }
+    }
+    function pullLoad(){
+        window.addEventListener('scroll', loadMoreApply, false);
+    }
+    pullLoad();
+</script>
 </body>
 
 </html>

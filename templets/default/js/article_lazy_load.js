@@ -1,4 +1,4 @@
-$(".blog-content img").wrap("<a data-fancybox='gallery' href='#'></a>").each(function (index, val) {
+$(".blog-content img").wrap("<div style=\"text-align: center;\"><a data-fancybox='gallery' href='#'></a></div>").each(function (index, val) {
     var data_src = $(this).attr('data-src');
     if (!data_src){
     var original = $(this).attr('data-original');
