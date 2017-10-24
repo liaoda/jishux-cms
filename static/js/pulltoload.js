@@ -14,7 +14,7 @@ $(function () {
         '                                <span class="am-icon-calendar" style="background-color: lightgrey">  · </span>\n' +
         '                                <span class="am-icon-eye" style="background-color: lightgrey">  </span>\n' +
         '                            </div>\n' +
-        '                            <p class="am-list-item-text" style="background-color: lightgrey">...</p>\n' +
+        '                            <p class="place_holder am-list-item-text" style="background-color: lightgrey">...</p>\n' +
         '                        </div>\n' +
         '                    </li>'
     var loadConfig = {
