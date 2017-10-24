@@ -14,7 +14,7 @@ require_once(dirname(__FILE__)."/../include/common.inc.php");
 //$t1 = ExecTime();
 //列表页瀑布流无限加载代码
 if(isset($_GET['ajax'])){
-    if (!$_COOKIE || !$_SERVER['HTTP_USER_AGENT']){
+    if (!$_SERVER['HTTP_REFERER'] || !$_SERVER['HTTP_USER_AGENT']){
         echo 'nothing support';
         exit();
     }
