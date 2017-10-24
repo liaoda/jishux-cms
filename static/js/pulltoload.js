@@ -11,7 +11,7 @@ $(function () {
         '                            </h3>\n' +
         '                            <div class="am-list-item-text">\n' +
         '                                <span class="am-icon-server" style="background-color: lightgrey">  · </span>\n' +
-        '                                <span class="am-icon-calendar" style="background-color: lightgrey">  · </span>\n' +
+        '                                <span class="am-icon-clock-o" style="background-color: lightgrey">  · </span>\n' +
         '                                <span class="am-icon-eye" style="background-color: lightgrey">  </span>\n' +
         '                            </div>\n' +
         '                            <p class="place_holder am-list-item-text" style="background-color: lightgrey">...</p>\n' +
