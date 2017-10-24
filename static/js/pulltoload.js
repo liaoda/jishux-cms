@@ -5,7 +5,7 @@ $(function () {
         '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
         '\n' +
         '                        </div>\n' +
-        '                        <div class="am-u-sm-12 am-list-main">\n' +
+        '                        <div class="am-u-sm-9 am-list-main">\n' +
         '                            <h3 class="am-list-item-hd">\n' +
         '                                <a href="#" style="background-color: lightgrey"></a>\n' +
         '                            </h3>\n' +
