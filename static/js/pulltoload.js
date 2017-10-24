@@ -33,7 +33,7 @@ $(function () {
             var url = loadConfig.url_api,data={ajax:'pullload',typeid:typeid,page:page,pagesize:pagesize};
             var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
 
-            if (sTop + cHeight >= dHeight-20) {
+            if (sTop + cHeight >= dHeight-50) {
                 $.AMUI.progress.start();
                 loadConfig.loading = 1;
                 list.append(footer)
