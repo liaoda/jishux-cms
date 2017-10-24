@@ -167,7 +167,7 @@
                 arr.push('</div>');
                 arr.push('</li>');
             }
-            $('.am-list').append(arr.join(''));
+            $('.am-list-news-bd>.am-list').append(arr.join(''));
             loadConfig.load_num = rs.load_num;
             if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
                 window.removeEventListener('srcoll',loadMoreApply,false);
