@@ -6,8 +6,8 @@ $(function () {
         '\n' +
         '                        </div>\n' +
         '                        <div class="am-u-sm-9 am-list-main">\n' +
-        '                            <h3 class="am-list-item-hd">\n' +
-        '                                <a href="#" style="background-color: lightgrey"></a>\n' +
+        '                            <h3 class="am-list-item-text">\n' +
+        '                                <a href="#" style="background-color: lightgrey">　　　　　　　　　　　</a>\n' +
         '                            </h3>\n' +
         '                            <div class="am-list-item-text">\n' +
         '                                <span class="am-icon-server" style="background-color: lightgrey">  · </span>\n' +
