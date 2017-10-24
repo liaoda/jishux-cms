@@ -1,6 +1,6 @@
 $(function () {
     var list = $('.am-list-news-bd>.am-list')
-    var footer ='<li  class="load-more am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
+    var footer ='<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
         '                        <div class="am-u-sm-3 am-list-thumb">\n' +
         '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
         '\n' +
