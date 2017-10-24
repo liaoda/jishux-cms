@@ -1,4 +1,22 @@
 $(function () {
+    var list = $('.am-list-news-bd>.am-list')
+    var footer ='<li style="display: none" class="load-more am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
+        '                        <div class="am-u-sm-3 am-list-thumb">\n' +
+        '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
+        '\n' +
+        '                        </div>\n' +
+        '                        <div class="am-u-sm-12 am-list-main">\n' +
+        '                            <h3 class="am-list-item-hd">\n' +
+        '                                <a href="#" style="background-color: lightgrey"></a>\n' +
+        '                            </h3>\n' +
+        '                            <div class="am-list-item-text">\n' +
+        '                                <span class="am-icon-server" style="background-color: lightgrey">  · </span>\n' +
+        '                                <span class="am-icon-calendar" style="background-color: lightgrey">  · </span>\n' +
+        '                                <span class="am-icon-eye" style="background-color: lightgrey">  </span>\n' +
+        '                            </div>\n' +
+        '                            <p class="am-list-item-text" style="background-color: lightgrey">...</p>\n' +
+        '                        </div>\n' +
+        '                    </li>'
     var loadmore = $('.load-more')
     var loadConfig = {
         url_api:'/plus/list.php',
@@ -18,7 +36,7 @@ $(function () {
             if (sTop + cHeight >= dHeight-20) {
                 $.AMUI.progress.start();
                 loadConfig.loading = 1;
-                loadmore.css('display','block')
+                list.append(footer)
                 function ajax(url, data) {
                     $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
                         addContent(data);
@@ -37,14 +55,14 @@ $(function () {
             for(var i=0;i<length;i++){
                 arr.push(data[i])
             }
-            $('.am-list-news-bd>.am-list').append(arr.join(''));
+            $('.am-list-news-bd>.am-list>li').eq(-1).remove()
+            list.append(arr.join(''));
             loadConfig.load_num = rs.load_num;
             if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
                 window.removeEventListener('srcoll',loadMoreApply,false);
             }
             loadConfig.page++;
             loadConfig.loading = 0;
-            loadmore.css('display','none')
             $.AMUI.progress.done();
         }
     }
