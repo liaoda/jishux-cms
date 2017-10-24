@@ -1,4 +1,5 @@
 $(function () {
+    var loadmore = $('.load-more')
     var loadConfig = {
         url_api:'/plus/list.php',
         typeid: $('.blog-g-fixed').attr('tid'),
@@ -18,6 +19,7 @@ $(function () {
             if (sTop + cHeight >= dHeight-20) {
                 $.AMUI.progress.start();
                 loadConfig.loading = 1;
+                loadmore.show()
                 function ajax(url, data) {
                     $.ajax({url: url,data: data,async: false,type: 'GET',dataType: 'json',success: function(data) {
                         addContent(data);
@@ -43,6 +45,7 @@ $(function () {
             }
             loadConfig.page++;
             loadConfig.loading = 0;
+            loadmore.hide()
             $.AMUI.progress.done();
         }
     }

@@ -50,7 +50,6 @@ if(isset($_GET['ajax'])){
             $row['isdefault'], $row['defaultname'], $row['ispart'],
             $row['namerule2'], $row['moresite'], $row['siteurl'], $row['sitepath']);
         if ($row['litpic'] == '-' || $row['litpic'] == '') {
-//            $row['litpic'] = $GLOBALS['cfg_cmspath'].'/images/default_pic.png';
             $row['litpic'] = '';
         }
         if (!preg_match("#^http:\/\/#i", $row['litpic']) && $GLOBALS['cfg_multi_site'] == 'Y') {
@@ -58,7 +57,6 @@ if(isset($_GET['ajax'])){
         }
         $row['picname'] = $row['litpic'];//缩略图
         $row['stime'] = GetDateMK($row['pubdate']);
-//        $row['stime'] = date('Y-m-d H:i', $row['pubdate']);
         $row['typelink'] = "" . $row['typename'] . "";//分类链
         $row['fulltitle'] = $row['title'];//完整的标题
         $row['title'] = cn_substr($row['title'], 80);//截取后的标题
@@ -101,12 +99,6 @@ if(isset($_GET['ajax'])){
         $html_str.= '</div>';
         $html_str.= '</li>';
 
-
-
-
-
-
-        
         
 //        $data[$index] = $row;
         $data[$index] = $html_str;
