@@ -73,7 +73,7 @@ if(isset($_GET['ajax'])){
                         $url =substr($url,0,strlen($url)-5).'/thumb';
                     }
                     $data_src = $url;
-                    $img_class = 'am-img-responsive lazyload';
+                    $img_class = 'lazyload am-img-responsive';
                     $article_class_name = 'am-u-sm-9 am-list-main';
         }
         $html_str.= '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">';
