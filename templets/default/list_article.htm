@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>{dede:include filename="header_m.htm"/}
-<div class="am-g am-g-fixed blog-g-fixed">
+<div class="am-g am-g-fixed blog-g-fixed" aid="{dede:field name='typeid'/}">
     <div class="am-u-md-8">
         <div data-am-widget="list_news" class="am-list-news am-list-news-default">
             <!--列表标题-->
@@ -107,7 +107,8 @@
         page:2,
         pagesize:15,  //这个就是滑动一次添加几条信息的参数设置
         loading : 0,
-    }
+    };
+    window.loadConfig= loadConfig;
     function  loadMoreApply(){
         if(loadConfig.loading === 0){
             var typeid = loadConfig.typeid;
