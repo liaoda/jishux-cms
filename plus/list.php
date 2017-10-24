@@ -71,7 +71,7 @@ if(isset($_GET['ajax'])){
 
         if ($row['picname']){
              $url = $row['picname'];
-                    if ($url) {
+                    if ($url && strpos($url,'_.jpg') ) {
                         $url =substr($url,0,strlen($url)-5).'/thumb';
                     }
                     $data_src = $url;
