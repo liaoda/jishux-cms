@@ -42,7 +42,6 @@ if(isset($_GET['ajax'])){
     $index = 0;
     while($row = $dsql->GetArray("list")) {
         $row['info'] = $row['info'] = $row['infos'] = cn_substr($row['description'], 160);
-        $row['id'] = $row['id'];
         $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'],
             $row['typeid'], $row['senddate'], $row['title'], $row['ismake'],
             $row['arcrank'], $row['namerule'], $row['typedir'], $row['money'],
@@ -60,18 +59,14 @@ if(isset($_GET['ajax'])){
         $row['picname'] = $row['litpic'];//缩略图
         $row['stime'] = GetDateMK($row['pubdate']);
 //        $row['stime'] = date('Y-m-d H:i', $row['pubdate']);
-        $row['click'] = $row['click'];
         $row['typelink'] = "" . $row['typename'] . "";//分类链
         $row['fulltitle'] = $row['title'];//完整的标题
-        $row['shorttitle'] = $row['shorttitle'];//副标题
         $row['title'] = cn_substr($row['title'], 80);//截取后的标题
 
 
          $article_class_name = 'am-u-sm-12 am-list-main';
          $data_src = "/images/default_pic.png";
          $img_class = 'am-img-responsive';
-
-
          $html_str = '';
 
         if ($row['picname']){
@@ -99,7 +94,7 @@ if(isset($_GET['ajax'])){
         $html_str.= '</h3>';
         $html_str.= '<div class="am-list-item-text">';
         $html_str.= '<span class="am-icon-server">'.$row['source'].' · </span>';
-        $html_str.= ' <span class="am-icon-calendar">'. $row['stime'] .'· </span>';
+        $html_str.= ' <span class="am-icon-calendar">'. $row['stime'] .' · </span>';
         $html_str.= '<span class="am-icon-eye">'. $row['click'] .' </span>';
         $html_str.= '</div>';
         $html_str.= '<p class="am-list-item-text">'.$row['description'].'...</p>';
