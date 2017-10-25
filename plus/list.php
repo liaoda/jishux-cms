@@ -88,7 +88,7 @@ if(isset($_GET['ajax'])){
         $html_str.= '</div>';
         $html_str.= '<div class="'.$article_class_name.'">';
         $html_str.= '<h3 class="am-list-item-hd">';
-        $html_str.= ' <a href="'.$row['arcurl'].'" class="">"'.$row['title'].'"</a>';
+        $html_str.= ' <a href="'.$row['arcurl'].'" class="">'.$row['title'].'</a>';
         $html_str.= '</h3>';
         $html_str.= '<div class="am-list-item-text">';
         $html_str.= '<span class="am-icon-server"> '.$row['source'].' · </span>';
