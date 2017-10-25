@@ -42,7 +42,7 @@ $(function () {
 
     $("code,pre").bind({
         copy : function(){
-            showDeskTopNotice("(｡･∀･)ﾉﾞ嗨","你要的代码已经复制到剪贴板，接下来看你的了~")
+            showDeskTopNotice("(｡･∀･)ﾉﾞ嗨","代码已经复制好啦，接下来看你的了~")
         }
     });
-})
+});
