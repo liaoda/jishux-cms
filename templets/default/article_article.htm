@@ -202,7 +202,49 @@ foreach($tags as $key => $value){
 <script data-cfasync="true" src="http://cdn.jishux.com/lazysizes.min.js"></script>
 <script data-cfasync="true" src="http://cdn.jishux.com/js.cookie.js"></script>
 <script data-cfasync="true" src="/static/js/article_like.js" language="javascript" type="text/javascript"></script>
-
+<script>
+    function showDeskTopNotice(title,msg){
+        var Notification = window.Notification || window.mozNotification || window.webkitNotification;
+        if(Notification){
+            Notification.requestPermission(function(status){
+                //status默认值'default'等同于拒绝 'denied' 意味着用户不想要通知 'granted' 意味着用户同意启用通知
+                if("granted" !== status){
+                    console.log('granted')
+                }else{
+                    var tag = "sds"+Math.random();
+                    var notify = new Notification(
+                        title,
+                        {
+                            dir:'auto',
+                            lang:'zh-CN',
+                            tag:tag,//实例化的notification的id
+                            icon:'http://www.jishux.com/favicon.ico',//通知的缩略图,//icon 支持ico、png、jpg、jpeg格式
+                            body:msg //通知的具体内容
+                        }
+                    );
+                    notify.onclick=function(){
+                        //如果通知消息被点击,通知窗口将被激活
+                        window.focus();
+                    },
+                        notify.onerror = function () {
+                            console.log("HTML5桌面消息出错！！！");
+                        };
+                    notify.onshow = function () {
+                        setTimeout(function(){
+                            notify.close();
+                        },2000)
+                    };
+                    notify.onclose = function () {
+                        console.log("HTML5桌面消息关闭！！！");
+                    };
+                }
+            });
+        }else{
+            console.log("您的浏览器不支持桌面消息");
+        }
+    }
+    showDeskTopNotice("通知","HTML5桌面消息")
+</script>
 
 <style type="text/css">
     #SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-main{  background:none;  }
