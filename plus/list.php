@@ -74,10 +74,10 @@ if(isset($_GET['ajax'])){
                     }
                     $data_src = $url;
                     $img_class = 'lazyload am-img-responsive';
-                    $article_class_name = 'am-u-sm-9 am-list-main';
+                    $article_class_name = 'am-u-sm-9 am-u-md-10 am-list-main';
         }
         $html_str.= '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">';
-        $html_str.= '<div class="am-u-sm-3 am-list-thumb">';
+        $html_str.= '<div class="am-u-sm-3 am-u-md-2 am-list-thumb">';
         $html_str.= '<a href="'.$row['arcurl'].'" title="'.$row['title'].'">';
         if($row['picname']){
             $html_str.= '<img src="http://cdn.jishux.com/default_pic_thumb.png" data-src="'.$data_src.'" class="'.$img_class.'">';
