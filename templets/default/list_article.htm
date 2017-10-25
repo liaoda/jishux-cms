@@ -104,7 +104,7 @@
             </section>
         </div>
     </div>
-    <div style="display: none;" class="am-u-md-12">
+    <div class="jsx-pagination am-u-md-12">
         <ul data-am-widget="pagination" class="am-pagination am-pagination-default">{dede:pagelist
             listitem="info,index,end,pre,next,pageno,option" listsize="5"/}
         </ul>
@@ -112,6 +112,11 @@
 </div>
 <!--{dede:include filename="footer_m.htm"/}-->
 <script data-cfasync="true" src="http://cdn.jishux.com/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.jsx-pagination').css('display','none')
+    })
+</script>
 <script data-cfasync="true" src="http://cdn.jishux.com/amazeui.min.js"></script>
 <script data-cfasync="true" src="/static/js/list_article.js"></script>
 <script data-cfasync="true" src="http://cdn.jishux.com/lazysizes.min.js"></script>
