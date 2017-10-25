@@ -165,6 +165,12 @@ foreach($tags as $key => $value){
 {dede:include filename="footer_m.htm"/}
 
 <script data-cfasync="true" src="http://cdn.jishux.com/jquery.min.js"></script>
+<script data-cfasync="true" type="text/javascript">
+    $(function () {
+        $('.am-topbar').attr('class','am-topbar am-topbar-fixed-top')
+    })
+</script>
+
 <script data-cfasync="true" src="http://cdn.jishux.com/amazeui.min.js"></script>
 <script data-cfasync="true" src="http://cdn.jishux.com/jquery.fancybox.min.js"></script>
 <script data-cfasync="true" src="/static/js/article_lazy_load.js"></script>
