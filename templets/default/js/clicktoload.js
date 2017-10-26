@@ -1,7 +1,8 @@
 $(function () {
+    var list = $('.load-container')
     var subnavs = $('.jsx-subnav>li')
-    var list = $('.am-list-news-bd>.am-list')
-    var listtype = $('.load-container').attr('listtype')
+    // var listtype = list.attr('listtype')
+    var tid = $('.blog-g-fixed').attr('tid')
     var footer = '<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
         '                        <div class="am-u-sm-3 am-u-md-2 am-list-thumb">\n' +
         '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
@@ -22,19 +23,24 @@ $(function () {
         '                    </li>'
     var loadConfig = {
         url_api: '/plus/list.php',
-        typeid: $('.blog-g-fixed').attr('tid'),
+        typeid: tid,
         page: 2,
-        listtype: listtype,
+        listtype: 'img',
         pagesize: 15,  //这个就是滑动一次添加几条信息的参数设置
         loading: 0,
     };
+    
+    function startAJAX() {
+        
+    }
 
-    function loadMoreApply() {
+    function loadMoreApply(ltype) {
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
-            var page = loadConfig.page;
+            var page =ltype? 1: loadConfig.page;
+            var listtype =ltype?ltype : loadConfig.listtype;
             var pagesize = loadConfig.pagesize;
-            var url = loadConfig.url_api, data = {ajax: 'pullload', typeid: typeid, page: page, pagesize: pagesize};
+            var url = loadConfig.url_api, data = {ajax: 'pullload', typeid: typeid,listtype:listtype, page: page, pagesize: pagesize};
 
             $.AMUI.progress.start();
             loadConfig.loading = 1;
@@ -63,7 +69,7 @@ $(function () {
             for (var i = 0; i < length; i++) {
                 arr.push(data[i])
             }
-            $('.am-list-news-bd>.am-list>li').eq(-1).remove();
+            list.find('li').eq(-1).remove();
             list.append(arr.join(''));
             loadConfig.load_num = rs.load_num;
             if (total < loadConfig.page * loadConfig.pagesize || loadConfig.page > loadConfig.load_num) {
@@ -75,11 +81,21 @@ $(function () {
         }
     }
 
-    function clickToLoad() {
-        $('.load-more').click(function () {
-            loadMoreApply()
-        })
-    }
 
-    clickToLoad()
+    $('.load-more').click(function () {
+        $('.jishux-list-types').animate({opacity:'0.2',height:'0px'},function () {
+            $(this).remove();
+        })
+        loadMoreApply()
+    })
+    subnavs.each(function (index, val) {
+        var listType = $(this).attr('listtype')
+        $(this).click(function () {
+            loadConfig.listtype = listType
+            loadConfig.page=1
+            list.find('li').remove()
+            loadMoreApply(listType)
+        })
+    })
+
 })

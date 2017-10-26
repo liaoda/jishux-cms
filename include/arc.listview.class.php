@@ -1106,7 +1106,7 @@ class ListView
         //获得上一页和下一页的链接
         if($this->PageNo != 1)
         {						
-            $prepage.="<li><a class=\"pagenew\" href='".$purl."PageNo=$prepagenum'>上一页</a></li>";
+            $prepage.="<li><a rel='prev' class=\"pagenew\" href='".$purl."PageNo=$prepagenum'>上一页</a></li>";
             $indexpage="<li><a class=\"pagenew\" href='".$purl."PageNo=1'>首页</a></li>";
         }
         else
@@ -1117,7 +1117,7 @@ class ListView
         if($this->PageNo!=$totalpage && $totalpage>1)
         {
 			
-            $nextpage.="<li><a class=\"pagenew\" href='".$purl."PageNo=$nextpagenum'>下一页</a></li>";
+            $nextpage.="<li><a rel='next' class=\"pagenew\" href='".$purl."PageNo=$nextpagenum'>下一页</a></li>";
             $endpage="<li><a class=\"pagenew\" href='".$purl."PageNo=$totalpage'>末页</a></li>";
         }
         else
