@@ -74,7 +74,8 @@
 				<h2>图文资讯</h2>
 			</div>
 			<div class="am-list-news-bd">
-				<ul class="am-list">{dede:arclist row=10 orderby=pubdate type='image.' imgwidth='150' imgheight='150'}
+				<ul class="am-list load-container" listtype="img">
+					{dede:arclist row=10 orderby=pubdate type='image.' imgwidth='150' imgheight='150'}
 					<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
 						<div class="am-u-sm-3 am-u-md-2 am-list-thumb">	<a href="[field:arcurl/]"><img  p-src="[field:litpic/]"  class="am-img-responsive" ></a>
 						</div>
@@ -89,6 +90,7 @@
 							<div class="am-list-item-text">[field:description/]</div>
 						</div>
 					</li>{/dede:arclist}</ul>
+				   <button type="button" class="load-more am-btn am-btn-default am-round">加载更多</button>
 			</div>
 		</div>
 
@@ -115,7 +117,7 @@
 			</section>
 		</div>
 	</div>
-	<div class="am-u-md-12">
+	<div class="jishux-list-types am-u-md-12">
 		<div data-am-widget="list_news" class="am-list-news am-list-news-default">
 			{dede:channelartlist}
 			<div data-am-widget="list_news" class="am-list-news   am-u-md-6">
