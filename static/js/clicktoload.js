@@ -1,6 +1,6 @@
 $(function () {
-    var list = $('.am-list-news-bd>.am-list')
-    var listtype = $('.load-container').attr('listtype')
+    var list = $('.load-container')
+    var listtype = list.attr('listtype')
     var footer = '<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
         '                        <div class="am-u-sm-3 am-u-md-2 am-list-thumb">\n' +
         '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
@@ -62,7 +62,7 @@ $(function () {
             for (var i = 0; i < length; i++) {
                 arr.push(data[i])
             }
-            $('.am-list-news-bd>.am-list>li').eq(-1).remove();
+            list.find('li').eq(-1).remove();
             list.append(arr.join(''));
             loadConfig.load_num = rs.load_num;
             if (total < loadConfig.page * loadConfig.pagesize || loadConfig.page > loadConfig.load_num) {
@@ -76,10 +76,7 @@ $(function () {
 
 
     $('.load-more').click(function () {
-
-        $('.jishux-list-types').hide('slow',function () {
-            $(this).remove()
-        });
+        $(this).remove()
         loadMoreApply()
 
     })
