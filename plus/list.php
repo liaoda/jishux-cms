@@ -26,8 +26,8 @@ if(isset($_GET['ajax'])){
     if (!isset($_GET['img'])){
         $typesql = $typeid ? " WHERE typeid=$typeid" : '';//这个是用于首页实现瀑布流加载，因为首页加载数据是无需分类的，所以要加以判断，如果无需
     }
-    if (isset($_GET['img']) && $typeid==0){
-        $typesql ="WHERE a.flag = '%p%' AND CHAR_LENGTH(arc.litpic)>0 ";
+    if (isset($_GET['img']) && $_GET['img']=='1' && $typeid==0){
+        $typesql ="WHERE a.flag LIKE '%p%' AND CHAR_LENGTH(a.litpic)>0 ";
     }
     $total_sql = "SELECT COUNT(id) as num FROM `#@__archives` $typesql ";
     $temp = $dsql->GetOne($total_sql);
