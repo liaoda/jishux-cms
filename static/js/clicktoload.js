@@ -76,7 +76,7 @@ $(function () {
 
 
     $('.load-more').click(function () {
-        $(this).remove()
+        $('.jishux-list-types').remove();
         loadMoreApply()
 
     })
