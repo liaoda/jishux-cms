@@ -91,7 +91,7 @@ $(function () {
     subnavs.each(function (index, val) {
         var listType = $(this).attr('listtype')
         $(this).click(function () {
-            list.remove('li')
+            list.find('li').remove()
             loadMoreApply(listtype)
         })
     })
