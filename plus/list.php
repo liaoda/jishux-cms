@@ -51,7 +51,7 @@ if(isset($_GET['ajax'])){
     }
     $sql = "SELECT a.*,t.typedir,t.typename,t.isdefault,t.defaultname,t.namerule,
     t.namerule2,t.ispart, t.moresite,t.siteurl,t.sitepath
-    FROM `#@__archives` as a JOIN `#@__arctype` AS t ON a.typeid=t.id $typesql ORDER BY pubdate DESC LIMIT $start,$pagesize";
+    FROM `#@__archives` as a JOIN `#@__arctype` AS t ON a.typeid=t.id $typesql ORDER BY $order DESC LIMIT $start,$pagesize";
     $dsql->SetQuery($sql);
     $dsql->Execute('list');
     $statu = 0;//是否有数据，默认没有数据
