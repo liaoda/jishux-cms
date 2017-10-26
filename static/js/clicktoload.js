@@ -27,13 +27,18 @@ $(function () {
         pagesize: 15,  //这个就是滑动一次添加几条信息的参数设置
         loading: 0,
     };
+    
+    function startAJAX() {
+        
+    }
 
     function loadMoreApply() {
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
             var page = loadConfig.page;
+            var listtype = loadConfig.listtype;
             var pagesize = loadConfig.pagesize;
-            var url = loadConfig.url_api, data = {ajax: 'pullload', typeid: typeid, page: page, pagesize: pagesize};
+            var url = loadConfig.url_api, data = {ajax: 'pullload', typeid: typeid,listtype:listtype, page: page, pagesize: pagesize};
 
             $.AMUI.progress.start();
             loadConfig.loading = 1;
