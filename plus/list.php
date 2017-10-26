@@ -25,7 +25,7 @@ if(isset($_GET['ajax'])){
     $start = $page>0 ? ($page-1)*$pagesize : 0;//数据获取的起始位置。即limit条件的第一个参数。
     $typesql = $typeid ? " WHERE typeid=$typeid" : '';//这个是用于首页实现瀑布流加载，因为首页加载数据是无需分类的，所以要加以判断，如果无需
     if (isset($_GET['img'])){
-        $typesql.="AND a.flag = '%p%'";
+        $typesql ="WHERE a.flag = '%p%' AND CHAR_LENGTH(arc.litpic)>0 ";
     }
     $total_sql = "SELECT COUNT(id) as num FROM `#@__archives` $typesql ";
     $temp = $dsql->GetOne($total_sql);
