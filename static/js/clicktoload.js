@@ -1,7 +1,7 @@
 $(function () {
     var list = $('.load-container')
     var subnavs = $('.jsx-subnav>li')
-    var listtype = list.attr('listtype')
+    // var listtype = list.attr('listtype')
     var tid = $('.blog-g-fixed').attr('tid')
     var footer = '<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
         '                        <div class="am-u-sm-3 am-u-md-2 am-list-thumb">\n' +
@@ -25,7 +25,7 @@ $(function () {
         url_api: '/plus/list.php',
         typeid: tid,
         page: 2,
-        listtype: listtype,
+        listtype: 'img',
         pagesize: 15,  //这个就是滑动一次添加几条信息的参数设置
         loading: 0,
     };
@@ -92,7 +92,7 @@ $(function () {
         var listType = $(this).attr('listtype')
         $(this).click(function () {
             list.find('li').remove()
-            loadMoreApply(listtype)
+            loadMoreApply(listType)
         })
     })
 
