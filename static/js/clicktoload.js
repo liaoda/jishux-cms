@@ -37,7 +37,7 @@ $(function () {
     function loadMoreApply(ltype) {
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
-            var page =ltype?ltype: loadConfig.page;
+            var page =ltype?1: loadConfig.page;
             var listtype =ltype?ltype : loadConfig.listtype;
             var pagesize = loadConfig.pagesize;
             var url = loadConfig.url_api, data = {ajax: 'pullload', typeid: typeid,listtype:listtype, page: page, pagesize: pagesize};
@@ -82,14 +82,15 @@ $(function () {
     }
 
 
-    // $('.load-more').click(function () {
-    //     $('.jishux-list-types').animate({opacity:'0.2',height:'0px'},function () {
-    //         $(this).remove();
-    //     })
-    //     loadMoreApply()
-    // })
+    $('.load-more').click(function () {
+        $('.jishux-list-types').animate({opacity:'0.2',height:'0px'},function () {
+            $(this).remove();
+        })
+        loadMoreApply()
+    })
     subnavs.each(function (index, val) {
         var listType = $(this).attr('listtype')
+        loadConfig.listtype = listType
         $(this).click(function () {
             list.find('li').remove()
             loadMoreApply(listType)
