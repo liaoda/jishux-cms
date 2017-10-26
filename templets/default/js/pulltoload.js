@@ -1,6 +1,8 @@
 $(function () {
     var list = $('.am-list-news-bd>.am-list')
+    var title = $('title').text()
     var current = $('.current').text()
+    var tid = $('.blog-g-fixed').attr('tid');
     if (current){
         current ++;
     }
@@ -24,7 +26,7 @@ $(function () {
         '                    </li>'
     var loadConfig = {
         url_api:'/plus/list.php',
-        typeid: $('.blog-g-fixed').attr('tid'),
+        typeid: tid,
         page:current,
         pagesize:15,  //这个就是滑动一次添加几条信息的参数设置
         loading : 0,
@@ -66,6 +68,7 @@ $(function () {
             if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
                 window.removeEventListener('srcoll',loadMoreApply,false);
             }
+            history.pushState(loadConfig.page,title,'/plus/list-'+tid+'-1-'+loadConfig.page+'.html')
             loadConfig.page++;
             loadConfig.loading = 0;
             $.AMUI.progress.done();
