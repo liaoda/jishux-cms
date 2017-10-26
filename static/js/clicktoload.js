@@ -37,7 +37,7 @@ $(function () {
     function loadMoreApply(ltype) {
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
-            var page =ltype?1: loadConfig.page;
+            var page =ltype? 1: loadConfig.page;
             var listtype =ltype?ltype : loadConfig.listtype;
             var pagesize = loadConfig.pagesize;
             var url = loadConfig.url_api, data = {ajax: 'pullload', typeid: typeid,listtype:listtype, page: page, pagesize: pagesize};
@@ -92,6 +92,7 @@ $(function () {
         var listType = $(this).attr('listtype')
         $(this).click(function () {
             loadConfig.listtype = listType
+            loadConfig.page=1
             list.find('li').remove()
             loadMoreApply(listType)
         })
