@@ -68,7 +68,7 @@ $(function () {
             if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
                 window.removeEventListener('srcoll',loadMoreApply,false);
             }
-            history.pushState(loadConfig.page,title,'/plus/list-'+tid+'-1-'+loadConfig.page+'.html')
+            history.pushState(loadConfig.page,title,'/plus/list-'+tid+'-'+total+'-'+loadConfig.page+'.html')
             loadConfig.page++;
             loadConfig.loading = 0;
             $.AMUI.progress.done();
