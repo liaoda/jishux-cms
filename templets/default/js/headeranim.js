@@ -11,14 +11,14 @@ $(function () {
             if (before - after < -80) {
                 //                         console.log('上');
                 if (i === 1 ) {
-                    topbar.animate({opacity:'0.2',height:'0px'})
+                    topbar.fadeOut();
                     i = 0;
                 }
                 before = after;
             }
             if (before - after > 80) {
                 if (i === 0 ) {
-                    topbar.fadeIn(animate({opacity:'1',height:''}));
+                    topbar.fadeIn();
                     i = 1;
                 }
                 before = after;
