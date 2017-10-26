@@ -76,9 +76,13 @@ $(function () {
 
 
     $('.load-more').click(function () {
-        $('.jishux-list-types').remove()
 
-        loadMoreApply()
+        $('.jishux-list-types').hide('slow',function () {
+            $(this).remove()
+            loadMoreApply()
+        })
+
+
     })
 
 
