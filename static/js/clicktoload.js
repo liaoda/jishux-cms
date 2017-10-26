@@ -76,7 +76,9 @@ $(function () {
 
 
     $('.load-more').click(function () {
-        $('.jishux-list-types').remove();
+        $('.jishux-list-types').animate({opacity:'0.2',height:'0px'},function () {
+            $(this).remove();
+        })
         loadMoreApply()
 
     })
