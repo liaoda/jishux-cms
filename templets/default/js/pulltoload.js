@@ -1,5 +1,9 @@
 $(function () {
     var list = $('.am-list-news-bd>.am-list')
+    var current = $('.current').text()
+    if (current){
+        current ++;
+    }
     var footer ='<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
         '                        <div class="am-u-sm-3 am-u-md-2 am-list-thumb">\n' +
         '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
@@ -21,7 +25,7 @@ $(function () {
     var loadConfig = {
         url_api:'/plus/list.php',
         typeid: $('.blog-g-fixed').attr('tid'),
-        page:2,
+        page:current,
         pagesize:15,  //这个就是滑动一次添加几条信息的参数设置
         loading : 0,
     };
