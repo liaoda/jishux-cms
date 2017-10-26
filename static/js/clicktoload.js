@@ -1,6 +1,7 @@
 $(function () {
     var list = $('.load-container')
     var listtype = list.attr('listtype')
+    var tid = $('.blog-g-fixed').attr('tid')
     var footer = '<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
         '                        <div class="am-u-sm-3 am-u-md-2 am-list-thumb">\n' +
         '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
@@ -21,7 +22,7 @@ $(function () {
         '                    </li>'
     var loadConfig = {
         url_api: '/plus/list.php',
-        typeid: $('.blog-g-fixed').attr('tid'),
+        typeid: tid,
         page: 2,
         listtype: listtype,
         pagesize: 15,  //这个就是滑动一次添加几条信息的参数设置

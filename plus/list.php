@@ -103,10 +103,24 @@ if(isset($_GET['ajax'])){
         $html_str.= ' <a href="'.$row['arcurl'].'" class="">'.$row['title'].'</a>';
         $html_str.= '</h3>';
         $html_str.= '<div class="am-list-item-text">';
-        $html_str.= '<span class="am-icon-server"> '.$row['source'].' · </span>';
-        $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
-        $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
-        $html_str.= '<span class="am-icon-eye"> '. $row['click'] .' </span>';
+
+        if (isset($_GET['listtype'])&& $typeid==0){
+            switch ($_GET['listtype']){
+                case 'img':
+                    $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
+                    $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
+                    $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
+                    $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .' </a>';
+                    break;
+                case 'like':
+                    break;
+            }
+        }else{
+            $html_str.= '<span class="am-icon-server"> '.$row['source'].' · </span>';
+            $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
+            $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
+            $html_str.= '<span class="am-icon-eye"> '. $row['click'] .' </span>';
+        }
         $html_str.= '</div>';
         $html_str.= '<p class="am-list-item-text">'.$row['description'].'...</p>';
         $html_str.= '</div>';
