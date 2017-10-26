@@ -235,7 +235,7 @@ function lib_arclistDone(&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen
         }
         //文档属性
         if(preg_match('/commend/i', $listtype)) $orwheres[] = " FIND_IN_SET('c', arc.flag)>0  ";
-        if(preg_match('/image/i', $listtype)) $orwheres[] = " FIND_IN_SET('p', arc.flag)>0  ";
+        if(preg_match('/image/i', $listtype)) $orwheres[] = " FIND_IN_SET('p', arc.flag)>0 AND CHAR_LENGTH(arc.litpic)>0 ";
         if($att != '') {
             $flags = explode(',', $att);
             for($i=0; isset($flags[$i]); $i++) $orwheres[] = " FIND_IN_SET('{$flags[$i]}', arc.flag)>0 ";
