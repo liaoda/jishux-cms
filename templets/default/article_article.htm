@@ -31,34 +31,12 @@
     <link rel="stylesheet" href="http://cdn.jishux.com/jquery.fancybox.min.css" />
 
     <style>
-        .qr-image{
-            visibility: hidden;
-            width: 12rem;
-            height: 12rem;
-            max-width: none;
-            margin-top: 4rem;
-            position: absolute;
-            z-index: 999;
-        }
-        .qr-image img,.qr-image a{
-            width: 100%;
-            height: auto;
-        }
-        .qr-share{
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .am-icon-weixin:hover + .qr-image{
-            visibility: visible;
-        }
-        .article-share{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
+        .qr-image{ visibility: hidden;width: 12rem;height: 12rem;max-width: none;margin-top: 4rem;position: absolute;z-index: 999;}
+        .qr-image img,.qr-image a{width: 100%;height: auto;}
+        .qr-share{position: relative;display: flex;flex-direction: column;align-items: center;}
+        .am-icon-weixin:hover + .qr-image{ visibility: visible;}
+        .article-share{display:flex;flex-direction: row;align-items: center;}
+        h3.am-article-title.blog-title {padding-top:.5rem;}
     </style>
 </head>
 <body>{dede:include filename="header_m.htm"/}
