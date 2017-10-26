@@ -1,4 +1,5 @@
 $(function () {
+    var subnavs = $('.jsx-subnav>li')
     var list = $('.am-list-news-bd>.am-list')
     var listtype = $('.load-container').attr('listtype')
     var footer = '<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +

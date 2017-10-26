@@ -23,6 +23,7 @@ if(isset($_GET['ajax'])){
     $page = isset($_GET['page']) ? intval($_GET['page']): 0;//页码
     $pagesize = isset($_GET['pagesize']) ? intval($_GET['pagesize']): 10;//每页多少条，也就是一次加载多少条数据
     $start = $page>0 ? ($page-1)*$pagesize : 0;//数据获取的起始位置。即limit条件的第一个参数。
+    $order = 'pubdate';
     if (!isset($_GET['listtype'])){
         $typesql = $typeid ? " WHERE typeid=$typeid" : '';//这个是用于首页实现瀑布流加载，因为首页加载数据是无需分类的，所以要加以判断，如果无需
     }
@@ -32,6 +33,10 @@ if(isset($_GET['ajax'])){
                 $typesql ="WHERE a.flag LIKE '%p%' AND CHAR_LENGTH(a.litpic)>0 ";
                 break;
             case 'like':
+                $order = 'a.goodpost';
+                break;
+            case 'click' :
+                $order = 'a.click';
                 break;
         }
     }
@@ -107,12 +112,12 @@ if(isset($_GET['ajax'])){
         if (isset($_GET['listtype'])&& $typeid==0){
             switch ($_GET['listtype']){
                 case 'img':
+                case 'like':
+                case 'click':
                     $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
                     $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
                     $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
                     $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .' </a>';
-                    break;
-                case 'like':
                     break;
             }
         }else{
