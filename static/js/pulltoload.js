@@ -1,3 +1,81 @@
-$(function(){function g(){if(0===a.loading){var b=a.url_api,c={ajax:"pullload",typeid:a.typeid,page:a.page,pagesize:a.pagesize},d=document.body.scrollTop||document.documentElement.scrollTop,e=$(document).height();d+document.documentElement.clientHeight>=e-50&&($.AMUI.progress.start(),a.loading=1,h.append('<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n                        <div class="am-u-sm-3 am-u-md-2 am-list-thumb">\n                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n\n                        </div>\n                        <div class="am-u-sm-9 am-u-md-10 am-list-main">\n                            <h3 class="am-list-item-text">\n                                <a href="#" style="background-color: lightgrey">\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000</a>\n                            </h3>\n                            <div class="am-list-item-text">\n                                <span class="am-icon-server" style="background-color: lightgrey">  \u00b7 </span>\n                                <span class="am-icon-clock-o" style="background-color: lightgrey">  \u00b7 </span>\n                                <span class="am-icon-eye" style="background-color: lightgrey">  </span>\n                            </div>\n                            <p class="place_holder am-list-item-text" style="background-color: lightgrey">...</p>\n                            <p class="place_holder2 am-list-item-text" style="background-color: lightgrey">...</p>\n                        </div>\n                    </li>'),
-    function(b,c){$.ajax({url:b,data:c,async:!0,type:"GET",dataType:"json",success:function(b){if(1===b.statu){console.log("success");for(var c=b.list,d=b.total,k=[],e=c.length,f=0;f<e;f++)k.push(c[f]);$(".am-list-news-bd>.am-list>li").eq(-1).remove();h.append(k.join(""));a.load_num=b.load_num;(d<a.page*a.pagesize||a.page>a.load_num)&&window.removeEventListener("srcoll",g,!1);a.page++;a.loading=0;$.AMUI.progress.done()}}})}(b,c))}}var h=$(".am-list-news-bd>.am-list"),b=$(".current").text();b&&b++;var a=
-    {url_api:"/plus/list.php",typeid:$(".blog-g-fixed").attr("tid"),page:b,pagesize:15,loading:0};window.addEventListener("scroll",g,!1)});
+$(function () {
+    var list = $('.am-list-news-bd>.am-list')
+    var title = $('title').text()
+    var current = $('.current').text()
+    var tid = $('.blog-g-fixed').attr('tid');
+    if (current){
+        current ++;
+    }
+    var footer ='<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
+        '                        <div class="am-u-sm-3 am-u-md-2 am-list-thumb">\n' +
+        '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
+        '\n' +
+        '                        </div>\n' +
+        '                        <div class="am-u-sm-9 am-u-md-10 am-list-main">\n' +
+        '                            <h3 class="am-list-item-text">\n' +
+        '                                <a href="#" style="background-color: lightgrey">　　　　　　　　　　　</a>\n' +
+        '                            </h3>\n' +
+        '                            <div class="am-list-item-text">\n' +
+        '                                <span class="am-icon-server" style="background-color: lightgrey">  · </span>\n' +
+        '                                <span class="am-icon-clock-o" style="background-color: lightgrey">  · </span>\n' +
+        '                                <span class="am-icon-eye" style="background-color: lightgrey">  </span>\n' +
+        '                            </div>\n' +
+        '                            <p class="place_holder am-list-item-text" style="background-color: lightgrey">...</p>\n' +
+        '                            <p class="place_holder2 am-list-item-text" style="background-color: lightgrey">...</p>\n' +
+        '                        </div>\n' +
+        '                    </li>'
+    var loadConfig = {
+        url_api:'/plus/list.php',
+        typeid: tid,
+        page:current,
+        pagesize:15,  //这个就是滑动一次添加几条信息的参数设置
+        loading : 0,
+    };
+    function  loadMoreApply(){
+        if(loadConfig.loading === 0){
+            var typeid = loadConfig.typeid;
+            var page = loadConfig.page;
+            var pagesize = loadConfig.pagesize;
+            var url = loadConfig.url_api,data={ajax:'pullload',typeid:typeid,page:page,pagesize:pagesize};
+            var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
+
+            if (sTop + cHeight >= dHeight-50) {
+                $.AMUI.progress.start();
+                loadConfig.loading = 1;
+                list.append(footer)
+                function ajax(url, data) {
+                    $.ajax({url: url,data: data,async: true,type: 'GET',dataType: 'json',success: function(data) {
+                        addContent(data);
+                    }});
+                }
+                ajax(url,data);
+            }
+        }
+    }
+    function addContent (rs){
+        if(rs.statu=== 1){
+            console.log('success')
+            var data = rs.list;
+            var total = rs.total;
+            var arr=[];
+            var length = data.length;
+            for(var i=0;i<length;i++){
+                arr.push(data[i])
+            }
+            $('.am-list-news-bd>.am-list>li').eq(-1).remove();
+            list.append(arr.join(''));
+            loadConfig.load_num = rs.load_num;
+            if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
+                window.removeEventListener('srcoll',loadMoreApply,false);
+            }
+            history.pushState(loadConfig.page,title,'/plus/list-'+tid+'-1-'+loadConfig.page+'.html')
+            loadConfig.page++;
+            loadConfig.loading = 0;
+            $.AMUI.progress.done();
+        }
+    }
+    function pullLoad(){
+        window.addEventListener('scroll', loadMoreApply, false);
+    }
+    pullLoad();
+})
