@@ -80,8 +80,8 @@ $(function () {
         $('.jishux-list-types').hide('slow',function () {
             $(this).remove()
             loadMoreApply()
-        })
-
+        });
+        loadMoreApply()
 
     })
 
