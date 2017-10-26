@@ -90,8 +90,8 @@ $(function () {
     })
     subnavs.each(function (index, val) {
         var listType = $(this).attr('listtype')
-        loadConfig.listtype = listType
         $(this).click(function () {
+            loadConfig.listtype = listType
             list.find('li').remove()
             loadMoreApply(listType)
         })
