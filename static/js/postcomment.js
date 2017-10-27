@@ -79,22 +79,16 @@ function LoadCommets(page) {
 
 function PostComment() {
 
-    var f = $('.am-form')
+    var $f = $('.am-form')
     var $msg = $('#msg');
     var msg = $msg.val();
-
-    var nface = '6';
-    var nfeedbacktype = 'feedback';
     var nvalidate = '';
-    var nnotuser = '1';
     var nusername = '------';
     if (msg.length < 10) {
         alert("请至少输入10个字！");
         return;
     }
-
-
-    var validate = f.find('#validate');
+    var validate = $f.find('#validate');
     var verfity_code = validate.val()
     if (verfity_code.length !== 4) {
         alert("请填写验证码！");
@@ -113,11 +107,11 @@ function PostComment() {
         sendlang: 'zh-CN',
         dopost: 'send',
         aid: aid,
-        fid: f.find('#feedbackfid').val(),
-        face: nface,
-        feedbacktype: nfeedbacktype,
+        fid: $f.find('#feedbackfid').val(),
+        face: '6',
+        feedbacktype: 'feedback',
         validate: nvalidate,
-        notuser: nnotuser,
+        notuser: '1',
         username: nusername,
         pwd: '-----pwd',
         msg: msg,
@@ -129,19 +123,21 @@ function PostComment() {
            if (data.substring(0,3)==='错误：'){
                alert(data)
            }else{
+               $msg.val('');
+               if (validate.val()) {
+                   var $validateimg = $('#validateimg');
+                   if ($validateimg) $validateimg.attr('src', "/include/vdimgck.php?");
+                   validate.val('')
+               }
                commentList.append(data)
+
            }
         }
     });
 
-    $msg.text('')
+    // $msg.text('')
 
-    f.find('#feedbackfid').val('')
-    if (validate.val()) {
-        var $validateimg = $('#validateimg');
-        if ($validateimg) $validateimg.attr('src', "/include/vdimgck.php?");
-        validate.val('')
-    }
+
 
 
 }
