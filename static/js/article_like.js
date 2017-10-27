@@ -90,19 +90,7 @@ $(function () {
         });
 
     }
-
-    // $(".am-comment-actions>a").each(function () {
-    //     var type = $(this).attr('type');
-    //     var c_id =  $(this).attr('fid');
-    //     if (type){
-    //         $(this).click(function () {
-    //             console.log(type+'----'+c_id)
-    //             postBadGood(type,c_id)
-    //         })
-    //     }
-    //
-    //
-    // })
+    
 
     $('#btn-like').click(function () {
         postGood()
