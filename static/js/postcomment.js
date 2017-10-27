@@ -131,7 +131,12 @@ function PostComment() {
 
     $.ajax({
         url: '/plus/feedback_ajax.php', data: data, async: true, type: 'POST', success: function (data) {
-            commentList.append(data)
+
+           if (data.substring(0,5)==='<font'){
+               alert(data)
+           }else{
+               commentList.append(data)
+           }
         }
     });
 
