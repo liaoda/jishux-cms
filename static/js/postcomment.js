@@ -49,7 +49,7 @@ function pullLoad(){
         var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
         console.log(sTop)
         console.log(cHeight)
-        console.log($btnComment.offsetTop)
+        console.log($btnComment.offset().top)
 
 
 
