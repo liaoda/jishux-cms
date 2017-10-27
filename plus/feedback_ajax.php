@@ -78,10 +78,10 @@ else if ($dopost == 'send') {
         echo "错误：评论内容可能不合法或为空！";
         exit();
     }
-    if ($cfg_feedback_guest == 'N' && $cfg_ml->M_ID < 1) {
-        echo "<font color='red'>管理员禁用了游客评论！<a href='{$cfg_cmspath}/member/login.php'>点击登录</a></font>";
-        exit();
-    }
+//    if ($cfg_feedback_guest == 'N' && $cfg_ml->M_ID < 1) {
+//        echo "<font color='red'>管理员禁用了游客评论！<a href='{$cfg_cmspath}/member/login.php'>点击登录</a></font>";
+//        exit();
+//    }
     //检查用户
     $username = empty($username) ? '游客' : $username;
     if (empty($notuser)) $notuser = 0;
