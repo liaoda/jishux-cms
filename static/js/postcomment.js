@@ -1,6 +1,20 @@
 var aid = $('.blog-g-fixed').attr('aid');
 var commentList = $('#ulcommentlist')
+var $btnComment = $('#btnComment');
+var state = 0;
 
+function scrollListener() {
+    var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(),
+        cHeight = document.documentElement.clientHeight;
+    console.log(sTop)
+    console.log(cHeight)
+    console.log()
+    if (sTop + cHeight > $btnComment.offset().top) {
+        if (!state) {
+            LoadCommets(1);
+        }
+    }
+}
 function postBadGood(ftype, fid) {
     var comment_floor = $('#' + ftype + fid);
     var saveid = Cookies.get('badgoodid');
@@ -42,9 +56,9 @@ function postBadGood(ftype, fid) {
 
 }
 
-var state = 0;
 
 function LoadCommets(page) {
+    window.removeEventListener('scroll',scrollListener)
     state = 1;
     var taget_obj = $('#commetcontent').text()
     var waithtml = "<div style='line-height:50px'><img src='/plus/images/loadinglit.gif' />评论加载中...</div>";
@@ -141,27 +155,15 @@ function PostComment() {
 
 }
 
-$('#btnComment').click(function () {
+$btnComment.click(function () {
     PostComment()
 })
 
 
+
 function pullLoad() {
-    var $btnComment = $('#btnComment');
-    window.addEventListener('scroll', function () {
-        var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(),
-            cHeight = document.documentElement.clientHeight;
-        console.log(sTop)
-        console.log(cHeight)
-        console.log()
-        if (sTop + cHeight > $btnComment.offset().top) {
-            if (!state) {
-                LoadCommets(1);
-            }
-        }
 
-
-    }, false);
+    window.addEventListener('scroll',scrollListener, false);
 }
 
 pullLoad();
