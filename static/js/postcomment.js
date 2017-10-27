@@ -1,4 +1,5 @@
 var aid= $('.blog-g-fixed').attr('aid');
+var commentList = $('#ulcommentlist')
 function LoadCommets(page)
 {
     var taget_obj = $('#commetcontent').text()
@@ -9,7 +10,7 @@ function LoadCommets(page)
         page:page
     }
     $.ajax({url: '/plus/feedback_ajax.php',data: data,async: true,type: 'GET',success: function(data) {
-        console.log(data)
+        commentList.push(data)
     }});
 
 }
