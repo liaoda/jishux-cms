@@ -21,13 +21,9 @@
         <textarea onfocus="this.value=''; this.onfocus=null;" class="ipt-txt" rows="5" cols="60" id="msg" name="msg">有您参与更精彩！</textarea><p></p>
         
         <div class="comm-con"><span>签名：</span><input type="text" onblur="if(this.value=='')this.value='匿名';" onfocus="if(this.value=='匿名')this.value='';" value="匿名" class="ipt-txt" size="36" id="commentNick" name="username">
-{dede:php}
-              if(preg_match("/4/",$safe_gdopen)){
-              echo '<span>验证码：</span>
+              <span>验证码：</span>
               <input type="text" name="validate" size="4" maxlength="4" class="ipt-txt" style="text-transform:uppercase;width:100px;"/>
-              <img src= "'.$cfg_cmspath.'/include/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src=this.src+\'?\'" title="点击我更换图片" alt="点击我更换图片"  class="vdimg"/>';
-              }
-              {/dede:php}        
+              <img src= "'.$cfg_cmspath.'/include/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src=this.src+\'?\'" title="点击我更换图片" alt="点击我更换图片"  class="vdimg"/>
         </div>
  
         <input onClick='PostComment()' type="button" class="button" id="btnComment" value="发表评论" name="btnComment">
