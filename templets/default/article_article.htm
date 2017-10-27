@@ -118,7 +118,7 @@ foreach($tags as $key => $value){
         </article>
 
     </div>
-    <div style="opacity: 0" class="jsx-left-side">
+    <div  class="jsx-left-side">
         <a data-am-smooth-scroll class="am-icon-btn am-icon-comments-o"></a>
     </div>
     <div class="am-u-md-4 blog-sidebar">
@@ -169,9 +169,9 @@ foreach($tags as $key => $value){
         window.lazySizesConfig = window.lazySizesConfig || {};
         window.lazySizesConfig.expand=-50;
         var i = 1;
-        topbar = $(".am-topbar");
-        jsx_left_side = $(".jsx-left-side");
-
+       var topbar = $(".am-topbar");
+      var  jsx_left_side = $(".jsx-left-side");
+        jsx_left_side.fadeIn()
         $(window).scroll(function () {
             var before = $(window).scrollTop();
             $(window).scroll(function () {
