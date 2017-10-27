@@ -90,6 +90,12 @@ $(function () {
         });
 
     }
+    
+    $("a[id^='#good']").each(function () {
+        var a_id = $(this).attr('id');
+        var c_id = a_id.substring(5,id.length);
+
+    })
 
     $('#btn-like').click(function () {
         postGood()
