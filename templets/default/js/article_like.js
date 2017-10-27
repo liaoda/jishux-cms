@@ -94,9 +94,9 @@ $(function () {
     $(".am-comment-actions>a").each(function () {
         var type = $(this).attr('type');
         var c_id =  $(this).attr('fid');
+        console.log(type+'----'+c_id)
         if (type){
             $(this).click(function () {
-                console.log(type+'----'+c_id)
                 postBadGood(type,c_id)
             })
         }
