@@ -50,7 +50,7 @@ function postBadGood(ftype, fid) {
         Cookies.set('badgoodid', fid, {expires: 1});
     }
 
-    var like_count = comment_floor.find('li')
+    var like_count = $(ssssid+'>.am-icon-thumbs-up')
     console.log(like_count)
     $.get("/plus/feedback.php?action=" + ftype + "&formurl=caicai" + "&aid=" + fid + '&fid=' + fid, function (data, status) {
         like_count.text(data)
