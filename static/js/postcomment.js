@@ -132,9 +132,6 @@ function PostComment() {
     $.ajax({
         url: '/plus/feedback_ajax.php', data: data, async: true, type: 'POST', success: function (data) {
             commentList.append(data)
-        },
-        error:function (data) {
-            console.log(data)
         }
     });
 
