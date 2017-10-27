@@ -4,7 +4,7 @@ var $btnComment = $('#btnComment');
 var state = 0;
 
 function scrollListener() {
-    var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(),
+    var sTop = document.body.scrollTop || document.documentElement.scrollTop,
         cHeight = document.documentElement.clientHeight;
     if (sTop + cHeight > $btnComment.offset().top) {
         if (!state) {
@@ -61,8 +61,6 @@ function postBadGood(ftype, fid) {
 function LoadCommets(page) {
     window.removeEventListener('scroll',scrollListener)
     state = 1;
-    var taget_obj = $('#commetcontent').text()
-    var waithtml = "<div style='line-height:50px'><img src='/plus/images/loadinglit.gif' />评论加载中...</div>";
     var data = {
         dopost: 'getlist',
         aid: aid,
