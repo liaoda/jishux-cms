@@ -91,9 +91,12 @@ $(function () {
 
     }
     
-    $("a[id^='#good']").each(function () {
-        var a_id = $(this).attr('id');
-        var c_id = a_id.substring(5,id.length);
+    $("a[id^='#good'],a[id^='#bad']").each(function () {
+        var type = $(this).attr('type');
+        var c_id =  $(this).attr('fid');
+        $(this).click(function () {
+            postBadGood(type,c_id)
+        })
 
     })
 
