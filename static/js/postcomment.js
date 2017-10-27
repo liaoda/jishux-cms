@@ -73,7 +73,7 @@ function PostComment() {
 
     $.ajax({
         url: '/plus/feedback_ajax.php', data: data, async: true, type: 'POST', success: function (data) {
-            commentList.append(data)
+           console.log(data)
         }
     });
     // var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
