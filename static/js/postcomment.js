@@ -6,9 +6,6 @@ var state = 0;
 function scrollListener() {
     var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(),
         cHeight = document.documentElement.clientHeight;
-    console.log(sTop)
-    console.log(cHeight)
-    console.log()
     if (sTop + cHeight > $btnComment.offset().top) {
         if (!state) {
             LoadCommets(1);
@@ -17,11 +14,9 @@ function scrollListener() {
 }
 function postBadGood(ftype, fid) {
     var ssssid= '#' + ftype + fid
-    console.log(ssssid)
     var comment_floor = $(ssssid);
     var saveid = Cookies.get('badgoodid');
     if (saveid) {
-        console.log(saveid)
         var saveids = saveid.split(',');
         var hasid = false;
         saveid = '';
@@ -131,9 +126,8 @@ function PostComment() {
 
     $.ajax({
         url: '/plus/feedback_ajax.php', data: data, async: true, type: 'POST', success: function (data) {
-            console.log(data.substring(0,3))
            if (data.substring(0,3)==='错误：'){
-               $.alert(data)
+               alert(data)
            }else{
                commentList.append(data)
            }
