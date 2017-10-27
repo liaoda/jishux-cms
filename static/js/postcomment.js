@@ -1,62 +1,51 @@
 var aid = $('.blog-g-fixed').attr('aid');
 var commentList = $('#ulcommentlist')
 
-function postBadGood(ftype,fid)
-{
-    var comment_floor = $('#'+ftype+fid);
+function postBadGood(ftype, fid) {
+    var comment_floor = $('#' + ftype + fid);
     var saveid = Cookies.get('badgoodid');
-    if(saveid)
-    {
+    if (saveid) {
         console.log(saveid)
         var saveids = saveid.split(',');
         var hasid = false;
         saveid = '';
         j = 1;
-        for(i=saveids.length-1;i>=0;i--)
-        {
-            if(saveids[i]===fid && hasid)
-            {}
+        for (i = saveids.length - 1; i >= 0; i--) {
+            if (saveids[i] === fid && hasid) {
+            }
             else {
-                if(saveids[i]===fid && !hasid) hasid = true;
-                saveid += (saveid==='' ? saveids[i] : ','+saveids[i]);
+                if (saveids[i] === fid && !hasid) hasid = true;
+                saveid += (saveid === '' ? saveids[i] : ',' + saveids[i]);
                 j++;
-                if(j===10 && hasid) break;
-                if(j===9 && !hasid) break;
+                if (j === 10 && hasid) break;
+                if (j === 9 && !hasid) break;
             }
         }
-        if(hasid) { comment_floor.popover({
-            content: '一次就好~'
-        }); return; }
-        else saveid += ','+fid;
-        Cookies.set('badgoodid',saveid,{ expires: 1 });
+        if (hasid) {
+            comment_floor.popover({
+                content: '一次就好~'
+            });
+            return;
+        }
+        else saveid += ',' + fid;
+        Cookies.set('badgoodid', saveid, {expires: 1});
     }
-    else
-    {
-        Cookies.set('badgoodid',fid,{ expires: 1 });
+    else {
+        Cookies.set('badgoodid', fid, {expires: 1});
     }
 
     var like_count = comment_floor.find('li')
 
-    $.get("/plus/feedback.php?action="+ftype+"&formurl=caicai"+"&aid="+fid+'&fid='+fid,function(data,status){
+    $.get("/plus/feedback.php?action=" + ftype + "&formurl=caicai" + "&aid=" + fid + '&fid=' + fid, function (data, status) {
         like_count.text(data)
     });
 
 }
 
-function pullLoad(){
-    var $btnComment = $('#btnComment');
-    window.addEventListener('scroll', function () {
-        var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
-        console.log(sTop)
-        console.log(cHeight)
-        console.log($btnComment.offset().top)
+var state = 0;
 
-
-
-    }, false);
-}
-pullLoad();
 function LoadCommets(page) {
+    state = 1;
     var taget_obj = $('#commetcontent').text()
     var waithtml = "<div style='line-height:50px'><img src='/plus/images/loadinglit.gif' />评论加载中...</div>";
     var data = {
@@ -69,11 +58,11 @@ function LoadCommets(page) {
             commentList.append(data)
             $(".am-comment-actions>a").each(function () {
                 var type = $(this).attr('type');
-                var c_id =  $(this).attr('fid');
-                console.log(type+'----'+c_id)
-                if (type){
+                var c_id = $(this).attr('fid');
+                console.log(type + '----' + c_id)
+                if (type) {
                     $(this).click(function () {
-                        postBadGood(type,c_id)
+                        postBadGood(type, c_id)
                     })
                 }
 
@@ -83,6 +72,7 @@ function LoadCommets(page) {
     });
 
 }
+
 
 function PostComment() {
 
@@ -154,4 +144,24 @@ function PostComment() {
 $('#btnComment').click(function () {
     PostComment()
 })
-LoadCommets(1);
+
+
+function pullLoad() {
+    var $btnComment = $('#btnComment');
+    window.addEventListener('scroll', function () {
+        var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(),
+            cHeight = document.documentElement.clientHeight;
+        console.log(sTop)
+        console.log(cHeight)
+        console.log()
+        if (sTop + cHeight > $btnComment.offset().top) {
+            if (!state) {
+                LoadCommets(1);
+            }
+        }
+
+
+    }, false);
+}
+
+pullLoad();
