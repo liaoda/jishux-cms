@@ -11,21 +11,26 @@
                               name="msg">有您参与更精彩！</textarea>
 
 
-                    <div class="am-form-group"><label for="commentNick">签名：</label><input type="text"
-                                                                                                  onblur="if(this.value==='')this.value='匿名';"
-                                                                                                  onfocus="if(this.value==='匿名')this.value='';"
-                                                                                                  value="匿名"
-                                                                                                  class="ipt-txt"
-                                                                                                  size="36"
-                                                                                                  id="commentNick"
-                                                                                                  name="username" required>
+                    <div class="am-form-group">
+                        <label class="am-form-label">签名：</label>
+                        <label class="am-checkbox-inline" for="commentNick"><input type="text"
+                                                                                                             onblur="if(this.value==='')this.value='匿名';"
+                                                                                                             onfocus="if(this.value==='匿名')this.value='';"
+                                                                                                             value="匿名"
+                                                                                                             class="ipt-txt"
+                                                                                                             size="36"
+                                                                                                             id="commentNick"
+                                                                                                             name="username"
+                                                                                                             required>
+                    </label>
+                        <label class="am-form-label">验证码：</label>
+                        <label class="am-checkbox-inline">
+                            <input type="text" name="validate" id="validate" size="4" maxlength="4" class="ipt-txt"
+                                   style="text-transform:uppercase;width:100px;" required/>
 
-                        <label>验证码： </label>
-                        <input type="text" name="validate" id="validate" size="4" maxlength="4" class="ipt-txt"
-                               style="text-transform:uppercase;width:100px;" required/>
-
-                        <img src="/include/vdimgck.php" id="validateimg" style="cursor:pointer"
-                             onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片" class="vdimg"/>
+                            <img src="/include/vdimgck.php" id="validateimg" style="cursor:pointer"
+                                 onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片" class="vdimg"/>
+                        </label>
                     </div>
 
                     <input type="button" class="button" id="btnComment" value="发表评论" name="btnComment">
