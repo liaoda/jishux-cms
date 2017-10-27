@@ -1,30 +1,29 @@
-<div id="commentDiv">
+<div id="am-g">
 
 
     <div id="post_comm" class="post_comment">
-        <h3 id="post_comment">发表评论</h3>
 
         <form action="#" method="post" name="feedback" class="am-form" onsubmit="return false;">
             <fieldset>
-                <div class="add_comm">
-                    <label for="msg">222222</label>
+                <div class="am-form-group">
+                    <label for="msg">发表评论</label>
                     <textarea onfocus="this.value=''; this.onfocus=null;" class="ipt-txt" rows="5" cols="60" id="msg"
                               name="msg">有您参与更精彩！</textarea>
-                    <p></p>
 
-                    <div class="comm-con"><span>签名：</span><label for="commentNick"></label><input type="text"
+
+                    <div class="am-form-group"><label for="commentNick">签名：</label><input type="text"
                                                                                                   onblur="if(this.value==='')this.value='匿名';"
                                                                                                   onfocus="if(this.value==='匿名')this.value='';"
                                                                                                   value="匿名"
                                                                                                   class="ipt-txt"
                                                                                                   size="36"
                                                                                                   id="commentNick"
-                                                                                                  name="username">
-                        <span>验证码：</span>
-                        <label>
-                            <input type="text" name="validate" id="validate" size="4" maxlength="4" class="ipt-txt"
-                                   style="text-transform:uppercase;width:100px;"/>
-                        </label>
+                                                                                                  name="username" required>
+
+                        <label>验证码： </label>
+                        <input type="text" name="validate" id="validate" size="4" maxlength="4" class="ipt-txt"
+                               style="text-transform:uppercase;width:100px;" required/>
+
                         <img src="/include/vdimgck.php" id="validateimg" style="cursor:pointer"
                              onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片" class="vdimg"/>
                     </div>
