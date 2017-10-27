@@ -49,9 +49,13 @@ function postBadGood(ftype, fid) {
     else {
         Cookies.set('badgoodid', fid, {expires: 1});
     }
-
-    var like_count = $('#'+fid)
-    console.log(like_count)
+    var li = '#'
+    if (ftype==='goodfb'){
+        li +='g'
+    }else{
+        li+='b'
+    }
+    var like_count = $(li+fid)
     $.get("/plus/feedback.php?action=" + ftype + "&formurl=caicai" + "&aid=" + fid + '&fid=' + fid, function (data, status) {
         like_count.text(data)
     });
