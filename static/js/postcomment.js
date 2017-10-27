@@ -53,7 +53,7 @@ function PostComment()
         for(var i=0; i < f.feedbacktype.length; i++)
             if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
     }
-    location.href="#newcomment";
+    // location.href="#newcomment";
 
     if(f.notuser.checked) nnotuser = '1';
     if(f.username) nusername = f.username.value;
