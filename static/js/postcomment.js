@@ -67,6 +67,18 @@ function PostComment() {
     $.ajax({
         url: '/plus/feedback_ajax.php', data: data, async: true, type: 'POST', success: function (data) {
             commentList.append(data)
+            $(".am-comment-actions>a").each(function () {
+                var type = $(this).attr('type');
+                var c_id =  $(this).attr('fid');
+                console.log(type+'----'+c_id)
+                if (type){
+                    $(this).click(function () {
+                        postBadGood(type,c_id)
+                    })
+                }
+
+
+            })
 
         }
     });
