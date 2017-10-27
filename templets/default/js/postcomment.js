@@ -82,10 +82,6 @@ function PostComment() {
     var msg = $msg.val();
     var nvalidate = '';
     var nusername = '------';
-    if (msg.length < 10) {
-        alert("请至少输入10个字！");
-        return;
-    }
     var validate = $f.find('#validate');
     var verfity_code = validate.val()
     if (verfity_code.length !== 4) {
