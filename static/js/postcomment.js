@@ -57,7 +57,7 @@ function postBadGood(ftype, fid) {
     }
     var like_count = $(li+fid)
     $.get("/plus/feedback.php?action=" + ftype + "&formurl=caicai" + "&aid=" + fid + '&fid=' + fid, function (data, status) {
-        like_count.text(data)
+        like_count.text(' '+data+' ')
     });
 
 }

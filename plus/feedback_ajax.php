@@ -201,24 +201,31 @@ else if ($dopost == 'send') {
         <?php
         $row = $dsql->GetOne("SELECT COUNT(*) AS lch FROM `#@__feedback` WHERE `aid`='" . $aid . "'");
         ?>
-        <li class="entry">
-            <div class="info">
-                <strong class="p_floor"><?php echo $row['lch'] ?>楼</strong>
-                <strong class="nick"><?php echo $username; ?></strong>
-                <?php $result = ip_to_district($ip);
-                echo $result; ?>
-                网友 回复于<?php echo GetDateMk($dtime); ?>
-            </div>
-            <div class="comm"><p><?php echo ubb($msg); ?></p>
-                <span class="comm_reply"><a style="cursor:pointer" id='#goodfb<?php echo $id; ?>'
-                                            onclick="postBadGood('goodfb',<?php echo $id; ?>);">支持(0)</a><span
-                            class="v">|</span><a style="cursor:pointer" id='#badfb<?php echo $id; ?>'
-                                                 onclick="postBadGood('badfb',<?php echo $id; ?>);">反对(0)</a><span
-                            class="v">|</span><a
-                            href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'>回复</a></span>
+
+        <li class="am-comment">
+            <img class="am-comment-avatar" src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96">
+
+            <div class="am-comment-main">
+                <header class="am-comment-hd">
+                    <div class="am-comment-meta">
+                        <a href="#link-to-user" class="am-comment-author"> <strong ><?php echo $row['lch']; ?>楼 </strong><?php echo $username; ?></a>
+                        <?php $result = ip_to_district($ip);
+                        echo $result; ?>     评论于 <time ><?php echo GetDateMk($dtime); ?></time>
+                    </div>
+
+                </header>
+                <div class="am-comment-bd">
+                    <?php echo ubb($msg); ?>
+                </div>
+                <div class="am-comment-actions">
+                    <a type="goodfb"  id='#goodfb<?php echo $id; ?>' onclick="postBadGood('goodfb',<?php echo $id; ?>);"><i id="<?php echo 'g'.$id; ?>" class="am-icon-thumbs-up"> <?php echo $good; ?> </i></a>
+                    <a type="badfb"  id='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);"><i id="<?php echo 'b'.$id; ?>" class="am-icon-thumbs-down"> <?php echo $bad; ?> </i></a>
+                    <a href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'><i class="am-icon-reply"></i></a></div>
+
             </div>
             <div id="ajaxfeedback_<?php echo $id; ?>"></div>
         </li>
+
 
         <?php
     }
