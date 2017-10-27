@@ -24,7 +24,7 @@ function PostComment()
     var nface = '6';
     var nfeedbacktype = 'feedback';
     var nvalidate = '';
-    var nnotuser = '';
+    var nnotuser = '1';
     var nusername = '';
     var npwd = '';
     var taget_obj = $('#commetcontentNew');
@@ -34,9 +34,12 @@ function PostComment()
         alert("请至少输入10个字！");
         return;
     }
+
     if(f.validate)
     {
-        if(!$('.ipt-txt').text()) {
+        var validate = f.find('#validate');
+
+        if(validate.val()) {
             alert("请填写验证码！");
             return;
         }
@@ -55,10 +58,7 @@ function PostComment()
     }
     // location.href="#newcomment";
 
-    if(f.notuser.checked) nnotuser = '1';
     if(f.username) nusername = f.username.value;
-    if(f.pwd) npwd = f.pwd.value;
-    if(f.msg) msg = f.msg.value;
     $msg.text('')
     var data = {
         sendlang:'zh-CN',
@@ -70,7 +70,7 @@ function PostComment()
         validate:nvalidate,
         notuser:nnotuser,
         username:nusername,
-        pwd:npwd,
+        pwd:'-----pwd',
         msg:msg,
 
     }
