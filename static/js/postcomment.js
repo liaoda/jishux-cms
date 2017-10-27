@@ -59,32 +59,49 @@ function PostComment()
     if(f.username) nusername = f.username.value;
     if(f.pwd) npwd = f.pwd.value;
     if(f.msg) msg = f.msg.value;
-    document.getElementById("msg").value= '';
     $msg.text('')
+    var data = {
+        sendlang:'zh-CN',
+        dopost:'send',
+        aid:aid,
+        fid:f.fid.value,
+        face:nface,
+        feedbacktype:nfeedbacktype,
+        validate:nvalidate,
+        notuser:nnotuser,
+        username:nusername,
+        pwd:npwd,
+        msg:msg,
 
-    var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
-    myajax.sendlang = '{dede:global.cfg_soft_lang/}';
-    myajax.AddKeyN('dopost', 'send');
-    myajax.AddKeyN('aid', '{dede:field.id/}');
-    myajax.AddKeyN('fid', f.fid.value);
-    myajax.AddKeyN('face', nface);
-    myajax.AddKeyN('feedbacktype', nfeedbacktype);
-    myajax.AddKeyN('validate', nvalidate);
-    myajax.AddKeyN('notuser', nnotuser);
-    myajax.AddKeyN('username', nusername);
-    myajax.AddKeyN('pwd', npwd);
-    myajax.AddKeyN('msg', msg);
-    myajax.SendPost2('/plus/feedback_ajax.php');
+    }
+
+    $.ajax({url: '/plus/feedback_ajax.php',data: data,async: true,type: 'POST',success: function(data) {
+        commentList.append(data)
+    }});
+    // var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+    // myajax.sendlang = '{dede:global.cfg_soft_lang/}';
+    // myajax.AddKeyN('dopost', 'send');
+    // myajax.AddKeyN('aid', '{dede:field.id/}');
+    // myajax.AddKeyN('fid', f.fid.value);
+    // myajax.AddKeyN('face', nface);
+    // myajax.AddKeyN('feedbacktype', nfeedbacktype);
+    // myajax.AddKeyN('validate', nvalidate);
+    // myajax.AddKeyN('notuser', nnotuser);
+    // myajax.AddKeyN('username', nusername);
+    // myajax.AddKeyN('pwd', npwd);
+    // myajax.AddKeyN('msg', msg);
+    // myajax.SendPost2('/plus/feedback_ajax.php');
     //msg = '';
-    CKEDITOR.instances.msg.setData('');
-    document.getElementById("msg").setData('');
-    document.getElementById("msg").value = "";
+    // CKEDITOR.instances.msg.setData('');
+    $msg.text('')
+    // document.getElementById("msg").value = "";
 
     //taget_obj.removeAttribute('id');
     f.fid.value = 0;
     if(f.validate)
     {
-        if($('#validateimg')) $('#validateimg').attr('src',"/plus/include/vdimgck.php?"+f.validate.value) ;
+        var $validateimg = $('#validateimg');
+        if($validateimg) $validateimg.attr('src',"/plus/include/vdimgck.php?"+f.validate.value) ;
         f.validate.value = '';
     }
 
