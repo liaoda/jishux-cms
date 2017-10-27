@@ -43,7 +43,7 @@ if($action=='goodfb')
     $fid = intval($fid);
     $dsql->ExecuteNoneQuery("UPDATE `#@__feedback` SET good = good+1 WHERE id='$fid' ");
     $row = $dsql->GetOne("SELECT good FROM `#@__feedback` WHERE id='$fid' ");
-    echo "<a onclick=\"postBadGood('goodfb',{$aid})\">支持</a>({$row['good']})";
+    echo $row['good'];
     exit();
 }
 else if($action=='badfb')
@@ -52,7 +52,7 @@ else if($action=='badfb')
     $fid = intval($fid);
     $dsql->ExecuteNoneQuery("UPDATE `#@__feedback` SET bad = bad+1 WHERE id='$fid' ");
     $row = $dsql->GetOne("SELECT bad FROM `#@__feedback` WHERE id='$fid' ");
-    echo "<a onclick=\"postBadGood('badfb',{$aid})\">反对</a>({$row['bad']})";
+    echo $row['bad'];
     exit();
 }
 //查看评论
