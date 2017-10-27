@@ -34,9 +34,11 @@ if(isset($_GET['ajax'])){
                 $typesql ="WHERE a.flag LIKE '%p%' AND CHAR_LENGTH(a.litpic)>0 ";
                 break;
             case 'like':
+                $typesql = "WHERE UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 30 DAY)) <= a.pubdate";
                 $order = 'a.goodpost';
                 break;
             case 'click' :
+                $typesql = "WHERE UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 30 DAY)) <= a.pubdate";
                 $order = 'a.click';
                 break;
         }
