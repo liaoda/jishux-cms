@@ -272,8 +272,10 @@ function GetList($page = 1)
         extract($fields, EXTR_OVERWRITE);
         ?>
 
-        
+
         <li class="am-comment">
+            <img class="am-comment-avatar" src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96">
+
             <div class="am-comment-main">
                 <header class="am-comment-hd">
                     <div class="am-comment-meta">
