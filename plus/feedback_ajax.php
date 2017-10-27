@@ -279,7 +279,7 @@ function GetList($page = 1)
             <div class="am-comment-main">
                 <header class="am-comment-hd">
                     <div class="am-comment-meta">
-                        <a href="#link-to-user" class="am-comment-author"> <strong ><?php echo $i; ?>楼</strong><?php echo $username; ?></a>
+                        <a href="#link-to-user" class="am-comment-author"> <strong ><?php echo $i; ?>楼 </strong><?php echo $username; ?></a>
                         <?php $result = ip_to_district($ip);
                         echo $result; ?>     评论于 <time ><?php echo GetDateMk($dtime); ?></time>
                     </div>
@@ -288,14 +288,11 @@ function GetList($page = 1)
                 <div class="am-comment-bd">
                     <?php echo ubb($msg); ?>
                 </div>
+                <div class="am-comment-actions">
+                    <a href="" id='#goodfb<?php echo $id; ?>' onclick="postBadGood('goodfb',<?php echo $id; ?>);"><i class="am-icon-thumbs-up"> 0 </i></a>
+                    <a href="#" id='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);"><i class="am-icon-thumbs-down"> 0 </i></a>
+                    <a href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'><i class="am-icon-reply"></i></a></div>
 
-
-                <span class="comm_reply"><a style="cursor:pointer" id='#goodfb<?php echo $id; ?>'
-                                            onclick="postBadGood('goodfb',<?php echo $id; ?>);">支持(0)</a><span
-                            class="v">|</span><a style="cursor:pointer" id='#badfb<?php echo $id; ?>'
-                                                 onclick="postBadGood('badfb',<?php echo $id; ?>);">反对(0)</a><span
-                            class="v">|</span><a
-                            href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'>回复</a></span>
             </div>
             <div id="ajaxfeedback_<?php echo $id; ?>"></div>
         </li>
