@@ -17,7 +17,7 @@ function LoadCommets(page)
 function PostComment()
 {
 
-    var f = document.feedback;
+    var f = $('.am-form')
     var $msg = $('#msg');
     var msg = $msg.text();
 
@@ -36,7 +36,7 @@ function PostComment()
     }
     if(f.validate)
     {
-        if(f.validate.value==='') {
+        if(!$('.ipt-txt').text()) {
             alert("请填写验证码！");
             return;
         }
