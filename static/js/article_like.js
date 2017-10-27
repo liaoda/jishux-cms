@@ -90,7 +90,7 @@ $(function () {
         });
 
     }
-    
+
 
     $('#btn-like').click(function () {
         postGood()
