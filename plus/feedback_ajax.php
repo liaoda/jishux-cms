@@ -220,7 +220,6 @@ else if ($dopost == 'send') {
                 <div class="am-comment-actions">
                     <a type="goodfb"  id='#goodfb<?php echo $id; ?>' onclick="postBadGood('goodfb',<?php echo $id; ?>);"><i id="<?php echo 'g'.$id; ?>" class="am-icon-thumbs-up"> <?php echo $good; ?> </i></a>
                     <a type="badfb"  id='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);"><i id="<?php echo 'b'.$id; ?>" class="am-icon-thumbs-down"> <?php echo $bad; ?> </i></a>
-                    <a href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'><i class="am-icon-reply"></i></a></div>
 
             </div>
             <div id="ajaxfeedback_<?php echo $id; ?>"></div>
@@ -231,6 +230,8 @@ else if ($dopost == 'send') {
     }
     exit();
 }
+/*<a href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'><i class="am-icon-reply"></i></a></div>*/
+
 
 /**
  *  读取列表内容
@@ -298,7 +299,6 @@ function GetList($page = 1)
                 <div class="am-comment-actions">
                     <a type="goodfb"  id='#goodfb<?php echo $id; ?>' onclick="postBadGood('goodfb',<?php echo $id; ?>);"><i id="<?php echo 'g'.$id; ?>" class="am-icon-thumbs-up"> <?php echo $good; ?> </i></a>
                     <a type="badfb"  id='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);"><i id="<?php echo 'b'.$id; ?>" class="am-icon-thumbs-down"> <?php echo $bad; ?> </i></a>
-                    <a href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'><i class="am-icon-reply"></i></a></div>
 
             </div>
             <div id="ajaxfeedback_<?php echo $id; ?>"></div>
@@ -308,6 +308,9 @@ function GetList($page = 1)
     }
     return $totalcount;
 }
+
+
+/*<a href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'><i class="am-icon-reply"></i></a></div>*/
 
 /**
  *  获取分页列表
