@@ -12,8 +12,23 @@ function scrollListener() {
         }
     }
 }
+
+
+function ajaxGB(ftype, fid) {
+    var li = '#'
+    if (ftype === 'goodfb') {
+        li += 'g'
+    } else {
+        li += 'b'
+    }
+    var like_count = $(li + fid)
+    $.get("/plus/feedback.php?action=" + ftype + "&formurl=caicai" + "&aid=" + fid + '&fid=' + fid, function (data, status) {
+        like_count.text(' ' + data + ' ')
+    });
+}
+
 function postBadGood(ftype, fid) {
-    var ssssid= '#' + ftype + fid
+    var ssssid = '#' + ftype + fid
     var comment_floor = $(ssssid);
     var saveid = Cookies.get('badgoodid');
     if (saveid) {
@@ -40,26 +55,18 @@ function postBadGood(ftype, fid) {
         }
         else saveid += ',' + fid;
         Cookies.set('badgoodid', saveid, {expires: 1});
+        ajaxGB(ftype, fid)
     }
     else {
         Cookies.set('badgoodid', fid, {expires: 1});
+        ajaxGB(ftype, fid)
     }
-    var li = '#'
-    if (ftype==='goodfb'){
-        li +='g'
-    }else{
-        li+='b'
-    }
-    var like_count = $(li+fid)
-    $.get("/plus/feedback.php?action=" + ftype + "&formurl=caicai" + "&aid=" + fid + '&fid=' + fid, function (data, status) {
-        like_count.text(' '+data+' ')
-    });
 
 }
 
 
 function LoadCommets(page) {
-    window.removeEventListener('scroll',scrollListener)
+    window.removeEventListener('scroll', scrollListener)
     state = 1;
     var data = {
         dopost: 'getlist',
@@ -114,24 +121,22 @@ function PostComment() {
 
     $.ajax({
         url: '/plus/feedback_ajax.php', data: data, async: true, type: 'POST', success: function (data) {
-           if (data.substring(0,3)==='错误：'){
-               alert(data)
-           }else{
-               $msg.val('');
-               if (validate.val()) {
-                   var $validateimg = $('#validateimg');
-                   if ($validateimg) $validateimg.attr('src', "/include/vdimgck.php?");
-                   validate.val('')
-               }
-               commentList.prepend(data)
+            if (data.substring(0, 3) === '错误：') {
+                alert(data)
+            } else {
+                $msg.val('');
+                if (validate.val()) {
+                    var $validateimg = $('#validateimg');
+                    if ($validateimg) $validateimg.attr('src', "/include/vdimgck.php?");
+                    validate.val('')
+                }
+                commentList.prepend(data)
 
-           }
+            }
         }
     });
 
     // $msg.text('')
-
-
 
 
 }
@@ -141,10 +146,9 @@ $btnComment.click(function () {
 })
 
 
-
 function pullLoad() {
 
-    window.addEventListener('scroll',scrollListener, false);
+    window.addEventListener('scroll', scrollListener, false);
 }
 
 pullLoad();
