@@ -45,6 +45,7 @@ else if ($dopost == 'send') {
         $svali = strtolower(trim(GetCkVdValue()));
         if (strtolower($validate) != $svali || $svali == '') {
             ResetVdValue();
+            header("HTTP/1.1 403 Forbidden");
             echo '<font color="red">验证码错误，请点击验证码图片更新验证码！</font>';
             exit();
         }
