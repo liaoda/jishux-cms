@@ -37,6 +37,12 @@
         .am-icon-weixin:hover + .qr-image{ visibility: visible;}
         .article-share{display:flex;flex-direction: row;align-items: center;}
         h3.am-article-title.blog-title {padding-top:.5rem;}
+        .jsx-left-side{
+            display: flex;
+            position: fixed;
+            top: 100px;
+            left: -50px;
+        }
     </style>
 </head>
 <body>{dede:include filename="header_m.htm"/}
@@ -141,6 +147,10 @@ foreach($tags as $key => $value){
         </div>
     </div>
 
+</div>
+
+<div  class="jsx-left-side">
+    <button data-am-smooth-scroll class="am-btn am-btn-success">滚动到顶部</button>
 </div>
 
 
