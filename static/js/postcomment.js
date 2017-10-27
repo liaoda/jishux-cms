@@ -42,6 +42,20 @@ function postBadGood(ftype,fid)
     });
 
 }
+
+function pullLoad(){
+    var $btnComment = $('#btnComment');
+    window.addEventListener('scroll', function () {
+        var sTop = document.body.scrollTop || document.documentElement.scrollTop, dHeight = $(document).height(), cHeight = document.documentElement.clientHeight;
+        console.log(sTop)
+        console.log(cHeight)
+        console.log($btnComment.offsetTop)
+
+
+
+    }, false);
+}
+pullLoad();
 function LoadCommets(page) {
     var taget_obj = $('#commetcontent').text()
     var waithtml = "<div style='line-height:50px'><img src='/plus/images/loadinglit.gif' />评论加载中...</div>";
