@@ -5,24 +5,29 @@
 
         <form action="#" method="post" name="feedback" class="am-form" onsubmit="return false;">
             <fieldset>
-                <div class="am-form-group">
-                    <label for="msg">发表评论</label>
-                    <textarea onfocus="this.value=''; this.onfocus=null;" class="ipt-txt" rows="5" cols="60" id="msg"
-                              name="msg">有您参与更精彩！</textarea>
+
+                    <div class="am-form-group">
+
+                        <label>发表评论</label>
+                        <label for="msg">
+                       <textarea onfocus="this.value=''; this.onfocus=null;" class="ipt-txt" rows="5" cols="60" id="msg"
+                                 name="msg">有您参与更精彩！</textarea>
+                        </label>
+                    </div>
 
 
                     <div class="am-form-group">
                         <label class="am-form-label">签名：</label>
                         <label class="am-checkbox-inline" for="commentNick"><input type="text"
-                                                                                                             onblur="if(this.value==='')this.value='匿名';"
-                                                                                                             onfocus="if(this.value==='匿名')this.value='';"
-                                                                                                             value="匿名"
-                                                                                                             class="ipt-txt"
-                                                                                                             size="36"
-                                                                                                             id="commentNick"
-                                                                                                             name="username"
-                                                                                                             required>
-                    </label>
+                                                                                   onblur="if(this.value==='')this.value='匿名';"
+                                                                                   onfocus="if(this.value==='匿名')this.value='';"
+                                                                                   value="匿名"
+                                                                                   class="ipt-txt"
+                                                                                   size="36"
+                                                                                   id="commentNick"
+                                                                                   name="username"
+                                                                                   required>
+                        </label>
 
                     </div>
                     <div class="am-form-group">
@@ -36,8 +41,6 @@
                     </div>
 
                     <input type="button" class="am-btn am-btn-secondary" id="btnComment" value="发表评论" name="btnComment">
-                    <span id="commentMessage"></span>
-                </div>
             </fieldset>
         </form>
         <div id="commentlist" class="comm_list">
