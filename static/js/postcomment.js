@@ -36,7 +36,7 @@ function PostComment() {
 
     var validate = f.find('#validate');
     var verfity_code = validate.val()
-    if (verfity_code) {
+    if (verfity_code.length()!==4) {
         alert("请填写验证码！");
         return;
     }
