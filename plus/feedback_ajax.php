@@ -289,8 +289,8 @@ function GetList($page = 1)
                     <?php echo ubb($msg); ?>
                 </div>
                 <div class="am-comment-actions">
-                    <a href="##" id='#goodfb<?php echo $id; ?>' onclick="postBadGood('goodfb',<?php echo $id; ?>);"><i class="am-icon-thumbs-up"> 0 </i></a>
-                    <a href="##" id='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);"><i class="am-icon-thumbs-down"> 0 </i></a>
+                    <a  id='#goodfb<?php echo $id; ?>' onclick="postBadGood('goodfb',<?php echo $id; ?>);"><i class="am-icon-thumbs-up"> 0 </i></a>
+                    <a id='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);"><i class="am-icon-thumbs-down"> 0 </i></a>
                     <a href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'><i class="am-icon-reply"></i></a></div>
 
             </div>
