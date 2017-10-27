@@ -16,7 +16,9 @@ function scrollListener() {
     }
 }
 function postBadGood(ftype, fid) {
-    var comment_floor = $('#' + ftype + fid);
+    var ssssid= '#' + ftype + fid
+    console.log(ssssid)
+    var comment_floor = $(ssssid);
     var saveid = Cookies.get('badgoodid');
     if (saveid) {
         console.log(saveid)
