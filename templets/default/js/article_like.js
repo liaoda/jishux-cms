@@ -91,7 +91,7 @@ $(function () {
 
     }
     
-    $(".am-comment-actions a").each(function () {
+    $(".am-comment-actions>a").each(function () {
         var type = $(this).attr('type');
         var c_id =  $(this).attr('fid');
         if (type){
