@@ -48,20 +48,24 @@
 //如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
 -->
 <script language='javascript'>
+    var aid= $('.blog-g-fixed').attr('aid');
 function LoadCommets(page)
 {
-		var taget_obj = document.getElementById('commetcontent');
+		var taget_obj = $('#commetcontent').text()
 		var waithtml = "<div style='line-height:50px'><img src='{dede:global.cfg_cmsurl/}/images/loadinglit.gif' />评论加载中...</div>";
-		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
-		myajax.SendGet2("{dede:global.cfg_phpurl /}/feedback_ajax.php?dopost=getlist&aid={dede:field.id/}&page="+page);
-		DedeXHTTP = null;
+//		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
+//		myajax.SendGet2("{dede:global.cfg_phpurl /}/feedback_ajax.php?dopost=getlist&aid={dede:field.id/}&page="+page);
+    $.ajax({url: '/plus/feedback_ajax.php?dopost=getlist&aid='+aid+'&page='+page,data: data,async: true,type: 'GET',success: function(data) {
+        console.log(data)
+    }});
+
 }
 function PostComment()
 {
 		 
 		var f = document.feedback;
-		
-		var msg = document.getElementById("msg").value;
+    var $msg = $('#msg');
+		var msg = $msg.text();
 		
 		var nface = '6';
 		var nfeedbacktype = 'feedback';
@@ -69,7 +73,7 @@ function PostComment()
 		var nnotuser = '';
 		var nusername = '';
 		var npwd = '';
-		var taget_obj = $DE('commetcontentNew');
+		var taget_obj = $('#commetcontentNew');
 		var waithtml = "<div style='line-height:30px'><img src='{dede:global.cfg_cmsurl/}/images/loadinglit.gif' />正在发送中...</div>";
 		if(msg.length < 10)
 		{
@@ -78,7 +82,7 @@ function PostComment()
 		}
 		if(f.validate)
 		{
-			if(f.validate.value=='') {
+			if(f.validate.value==='') {
 				alert("请填写验证码！");
 				return;
 			}
@@ -96,17 +100,13 @@ function PostComment()
 				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
 		}
 		location.href="#newcomment";
-		/*
-		if(f.face) {
-			for(var j=0; j < f.face.length; j++)
-				if(f.face[j].checked) nface = f.face[j].value;
-		}
-		*/
+
 		if(f.notuser.checked) nnotuser = '1';
 		if(f.username) nusername = f.username.value;
 		if(f.pwd) npwd = f.pwd.value;
 		if(f.msg) msg = f.msg.value;
 		document.getElementById("msg").value= '';
+		$msg.text('')
 		
 		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
 		myajax.sendlang = '{dede:global.cfg_soft_lang/}';
@@ -130,100 +130,11 @@ function PostComment()
 		f.fid.value = 0;
 		if(f.validate)
 		{
-			if($DE('validateimg')) $DE('validateimg').src = "{dede:global.cfg_cmsurl/}/include/vdimgck.php?"+f.validate.value;
+			if($('#validateimg')) $('#validateimg').attr('src',"/plus/include/vdimgck.php?"+f.validate.value) ;
 			f.validate.value = '';
 		}
 		
 		
-}
-function quoteCommet(fid)
-{
-	    document.feedback.fid.value = fid;
-}
-  
-function ajaxFeedback(aid, fid, type)
-{
-	
-	var taget_obj = $DE('ajaxfeedback_'+fid);
-	if(taget_obj.innerHTML == '')
-	{
-		var myajax = new DedeAjax(taget_obj, true, true, '', 'x');
-		myajax.SendGet2("{dede:global.cfg_phpurl /}/feedback.php?aid="+aid+"&fid="+fid+"&action=quote&type=ajax");
-		eval('var result = typeof CKEDITOR.instances.msg_'+fid);
-		if(result != 'undefined')
-		{
-			// 删除实例
-			eval('var edit = CKEDITOR.instances.msg_'+fid);
-			CKEDITOR.remove(edit);
-		}
-		CKEDITOR.replace(document.getElementById('msg_'+fid) , CKEDITOR.instances.msg.config);
-		scroll(0, taget_obj.offsetTop - 120);
-		var formname = 'f = document.ajaxfeedback_'+fid;
-		eval(formname);
-		if(f.validate)
-		{
-			if($DE('vdimg_'+fid)) $DE('vdimg_'+fid).src = "{dede:global.cfg_cmsurl/}/include/vdimgck.php?"+f.validate.value;
-			f.validate.value = '';
-		}
-		
-		DedeXHTTP = null;
-	}
-}
-
-
-
-function ajaxQuotePost(fid)
-{
-	var formname = 'f = document.ajaxfeedback_'+fid;
-	eval(formname);
-	//var f = document.formname;
-	//var f = f[0];
-	var nvalidate = '';
-	var nnotuser = '';
-	var nusername = '';
-	var npwd = '';
-	var taget_obj = $DE('commetcontentNew');
-	var waithtml = "<div style='line-height:30px'><img src='{dede:global.cfg_cmsurl/}/images/loadinglit.gif' />正在发送中...</div>";
-	eval('var msg = document.getElementById("msg_'+fid+'").value');
-
-	if(f.validate)
-	{
-		if(f.validate.value==='') {
-			alert("请填写验证码！");
-			return;
-		}
-		else {
-			nvalidate = f.validate.value;
-		}
-	}
-	var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
-	
-	if(f.notuser.checked) nnotuser = '1';
-	if(f.username) nusername = f.username.value;
-	if(f.pwd) npwd = f.pwd.value;
-	
-	myajax.sendlang = '{dede:global.cfg_soft_lang/}';
-	myajax.AddKeyN('dopost', 'send');
-	myajax.AddKeyN('aid', '{dede:field.id/}');
-	myajax.AddKeyN('fid', f.fid.value);
-	myajax.AddKeyN('type', 'ajax');
-	myajax.AddKeyN('comtype', f.comtype.value);
-	myajax.AddKeyN('isconfirm','yes');
-	
-	myajax.AddKeyN('typeid', f.typeid.value);
-	myajax.AddKeyN('quotemsg', f.quotemsg.value);
-	myajax.AddKeyN('validate', nvalidate);
-	myajax.AddKeyN('notuser', nnotuser);
-	myajax.AddKeyN('username', nusername);
-	myajax.AddKeyN('pwd', npwd);
-	myajax.AddKeyN('msg', msg);
-	myajax.SendPost2('{dede:global.cfg_phpurl/}/feedback_ajax.php');
-	//alert(f.quotemsg.value);
-	if($DE('ajaxfeedback_'+fid).innerHTML != null)
-	{
-		$DE('ajaxfeedback_'+fid).innerHTML = '';
-	}
-	scroll(0, taget_obj.offsetTop);
 }
 LoadCommets(1);
 </script>
