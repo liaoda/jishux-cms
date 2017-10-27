@@ -95,6 +95,7 @@ $(function () {
         var type = $(this).attr('type');
         var c_id =  $(this).attr('fid');
         $(this).click(function () {
+            console.log(type+'----'+c_id)
             postBadGood(type,c_id)
         })
 
