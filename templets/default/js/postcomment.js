@@ -123,7 +123,7 @@ function PostComment() {
                    if ($validateimg) $validateimg.attr('src', "/include/vdimgck.php?");
                    validate.val('')
                }
-               commentList.append(data)
+               commentList.prepend(data)
 
            }
         }
