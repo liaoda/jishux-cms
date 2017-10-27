@@ -201,7 +201,7 @@ else if ($dopost == 'send') {
         <?php
         $row = $dsql->GetOne("SELECT COUNT(*) AS lch FROM `#@__feedback` WHERE `aid`='" . $aid . "'");
         ?>
-        <li class="entry">
+        <li class="am-comment">
             <div class="info">
                 <strong class="p_floor"><?php echo $row['lch'] ?>楼</strong>
                 <strong class="nick"><?php echo $username; ?></strong>
