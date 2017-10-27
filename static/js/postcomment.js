@@ -10,7 +10,7 @@ function LoadCommets(page)
         page:page
     }
     $.ajax({url: '/plus/feedback_ajax.php',data: data,async: true,type: 'GET',success: function(data) {
-        commentList.push(data)
+        commentList.append(data)
     }});
 
 }
