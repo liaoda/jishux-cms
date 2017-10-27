@@ -64,7 +64,7 @@ function PostComment()
         sendlang:'zh-CN',
         dopost:'send',
         aid:aid,
-        fid:f.fid.value,
+        fid:f.find('#feedbackfid').val(),
         face:nface,
         feedbacktype:nfeedbacktype,
         validate:nvalidate,
