@@ -279,7 +279,7 @@ function GetList($page = 1)
             <div class="am-comment-main">
                 <header class="am-comment-hd">
                     <div class="am-comment-meta">
-                        <a href="#link-to-user" class="am-comment-author"> <strong ><?php echo $row['lch'] ?>楼</strong><?php echo $username; ?></a>
+                        <a href="#link-to-user" class="am-comment-author"> <strong ><?php echo $i; ?>楼</strong><?php echo $username; ?></a>
                         <?php $result = ip_to_district($ip);
                         echo $result; ?>     评论于 <time ><?php echo GetDateMk($dtime); ?></time>
                     </div>
