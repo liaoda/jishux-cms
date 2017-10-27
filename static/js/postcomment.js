@@ -76,7 +76,7 @@ function PostComment() {
     f.find('#feedbackfid').val('')
     if (validate.val()) {
         var $validateimg = $('#validateimg');
-        if ($validateimg) $validateimg.attr('src', "/plus/include/vdimgck.php");
+        if ($validateimg) $validateimg.attr('src', "/include/vdimgck.php");
         validate.val('')
     }
 
