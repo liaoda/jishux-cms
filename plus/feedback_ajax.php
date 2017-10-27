@@ -45,7 +45,7 @@ else if ($dopost == 'send') {
         $svali = strtolower(trim(GetCkVdValue()));
         if (strtolower($validate) != $svali || $svali == '') {
             ResetVdValue();
-            echo '<font color="red">验证码错误，请点击验证码图片更新验证码！</font>';
+            echo '错误：验证码错误，请点击验证码图片更新验证码！';
             exit();
         }
     }
@@ -67,7 +67,7 @@ else if ($dopost == 'send') {
     //词汇过滤检查
     if ($cfg_notallowstr != '') {
         if (preg_match("#" . $cfg_notallowstr . "#i", $msg)) {
-            echo "<font color='red'>评论内容含有禁用词汇！</font>";
+            echo "错误：评论内容含有禁用词汇！";
             exit();
         }
     }
@@ -75,7 +75,7 @@ else if ($dopost == 'send') {
         $msg = preg_replace("#" . $cfg_replacestr . "#i", '***', $msg);
     }
     if (empty($msg)) {
-        echo "<font color='red'>评论内容可能不合法或为空！</font>";
+        echo "错误：评论内容可能不合法或为空！";
         exit();
     }
     if ($cfg_feedback_guest == 'N' && $cfg_ml->M_ID < 1) {
@@ -106,7 +106,7 @@ else if ($dopost == 'send') {
         $row = $dsql->GetOne("SELECT dtime FROM `#@__feedback` $where ORDER BY `id` DESC ");
         if (is_array($row) && $dtime - $row['dtime'] < $cfg_feedback_time) {
             ResetVdValue();
-            echo '<font color="red">管理员设置了评论间隔时间，请稍等休息一下！</font>';
+            echo '错误：管理员设置了评论间隔时间，请稍等休息一下！';
             exit();
         }
     }
@@ -132,7 +132,7 @@ else if ($dopost == 'send') {
                    VALUES ('$aid','$typeid','$username','$arctitle','$ip','$ischeck','$dtime', '{$cfg_ml->M_ID}','0','0','$feedbacktype','$face','$msg'); ";
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if (!$rs) {
-        echo "<font color='red'>发表评论出错了！</font>";
+        echo "错误：发表评论出错了！";
         //echo $dslq->GetError();
         exit();
     }

@@ -132,7 +132,7 @@ function PostComment() {
     $.ajax({
         url: '/plus/feedback_ajax.php', data: data, async: true, type: 'POST', success: function (data) {
 
-           if (data.substring(0,5)==='<font'){
+           if (data.substring(0,3)==='错误：'){
                $.alert(data)
            }else{
                commentList.append(data)
