@@ -1,4 +1,3 @@
-<script language='javascript'>
 var aid= $('.blog-g-fixed').attr('aid');
 function LoadCommets(page)
 {
@@ -91,4 +90,3 @@ $('#btnComment').click(function () {
     PostComment()
 })
 LoadCommets(1);
-</script>
