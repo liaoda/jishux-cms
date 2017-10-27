@@ -19,7 +19,7 @@ function PostComment()
 
     var f = $('.am-form')
     var $msg = $('#msg');
-    var msg = $msg.text();
+    var msg = $msg.val();
 
     var nface = '6';
     var nfeedbacktype = 'feedback';
