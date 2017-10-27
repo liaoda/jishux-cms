@@ -48,7 +48,7 @@ function PostComment() {
         alert("你的评论是不是太长了？请填写500字以内的评论。");
         return;
     }
-    $msg.text('')
+
     var data = {
         sendlang: 'zh-CN',
         dopost: 'send',
@@ -76,7 +76,7 @@ function PostComment() {
     f.find('#feedbackfid').val('')
     if (validate.val()) {
         var $validateimg = $('#validateimg');
-        if ($validateimg) $validateimg.attr('src', "/plus/include/vdimgck.php?" + nvalidate);
+        if ($validateimg) $validateimg.attr('src', "/plus/include/vdimgck.php");
         validate.val('')
     }
 
