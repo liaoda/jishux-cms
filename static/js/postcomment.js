@@ -36,10 +36,7 @@ function postBadGood(ftype,fid)
     }
 
     var like_count = comment_floor.find('li')
-
-    if(!action){
-        action='num'
-    }
+    
     $.get("/plus/feedback.php?action="+ftype+"&formurl=caicai"+"&aid="+fid+'fid='+fid,function(data,status){
         like_count.text(data)
     });
