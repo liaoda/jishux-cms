@@ -3,9 +3,12 @@ function LoadCommets(page)
 {
     var taget_obj = $('#commetcontent').text()
     var waithtml = "<div style='line-height:50px'><img src='/plus/images/loadinglit.gif' />评论加载中...</div>";
-//		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
-//		myajax.SendGet2("{dede:global.cfg_phpurl /}/feedback_ajax.php?dopost=getlist&aid={dede:field.id/}&page="+page);
-    $.ajax({url: '/plus/feedback_ajax.php?dopost=getlist&aid='+aid+'&page='+page,data: data,async: true,type: 'GET',success: function(data) {
+    var data = {
+        dopost:'getlist',
+        aid:aid,
+        page:page
+    }
+    $.ajax({url: '/plus/feedback_ajax.php',data: data,async: true,type: 'GET',success: function(data) {
         console.log(data)
     }});
 
