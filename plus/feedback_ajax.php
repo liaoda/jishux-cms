@@ -290,7 +290,7 @@ function GetList($page = 1)
                 </div>
                 <div class="am-comment-actions">
                     <a type="goodfb" fid="<?php echo $id; ?>" id='#goodfb<?php echo $id; ?>' ><i class="am-icon-thumbs-up"> 0 </i></a>
-                    <a type="badfb" fid="<?php echo $id; ?>" id='#badfb<?php echo $id; ?>' ><i class="am-icon-thumbs-down"> 0 </i></a>
+                    <a type="badfb" fid="<?php echo $id; ?>" id='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);"><i class="am-icon-thumbs-down"> 0 </i></a>
                     <a href='javascript:ajaxFeedback(<?php echo $id; ?>,<?php echo $id; ?>,"quote");ShowReplay(<?php echo $id; ?>,71269) ;'><i class="am-icon-reply"></i></a></div>
 
             </div>
