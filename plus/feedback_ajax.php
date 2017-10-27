@@ -128,8 +128,8 @@ else if ($dopost == 'send') {
     $arctitle = addslashes(RemoveXSS($title));
     $typeid = intval($typeid);
     $feedbacktype = preg_replace("#[^0-9a-z]#i", "", $feedbacktype);
-    $inquery = "INSERT INTO `#@__feedback`(`aid`,`typeid`,`username`,`arctitle`,`ip`,`ischeck`,`dtime`, `mid`,`bad`,`good`,`ftype`,`face`,`msg`,`headimg`,)
-                   VALUES ('$aid','$typeid','$username','$arctitle','$ip','$ischeck','$dtime', '{$cfg_ml->M_ID}','0','0','$feedbacktype','$face','$msg','http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96'); ";
+    $inquery = "INSERT INTO `#@__feedback`(`aid`,`typeid`,`username`,`arctitle`,`ip`,`ischeck`,`dtime`, `mid`,`bad`,`good`,`ftype`,`face`,`msg`)
+                   VALUES ('$aid','$typeid','$username','$arctitle','$ip','$ischeck','$dtime', '{$cfg_ml->M_ID}','0','0','$feedbacktype','$face','$msg'); ";
     $rs = $dsql->ExecuteNoneQuery($inquery);
     if (!$rs) {
         echo "错误：发表评论出错了！";
