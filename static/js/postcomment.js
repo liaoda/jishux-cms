@@ -97,12 +97,12 @@ function PostComment()
     // document.getElementById("msg").value = "";
 
     //taget_obj.removeAttribute('id');
-    f.fid.value = 0;
-    if(f.validate)
+    f.find('#feedbackfid').val('')
+    if(validate.val())
     {
         var $validateimg = $('#validateimg');
         if($validateimg) $validateimg.attr('src',"/plus/include/vdimgck.php?"+f.validate.value) ;
-        f.validate.value = '';
+        validate.val('')
     }
 
 
