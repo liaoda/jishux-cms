@@ -131,7 +131,7 @@ function PostComment() {
 
     $.ajax({
         url: '/plus/feedback_ajax.php', data: data, async: true, type: 'POST', success: function (data) {
-
+            console.log(data.substring(0,3))
            if (data.substring(0,3)==='错误：'){
                $.alert(data)
            }else{
