@@ -60,6 +60,7 @@ if(isset($_GET['ajax'])){
     $statu = 0;//是否有数据，默认没有数据
     $data = array();
     $index = 0;
+    $data[0]='<div>第 '.$page.' 页</div>';
     while($row = $dsql->GetArray("list")) {
         $row['info'] = $row['info'] = $row['infos'] = cn_substr($row['description'], 160);
         $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'],
@@ -85,7 +86,7 @@ if(isset($_GET['ajax'])){
          $article_class_name = 'am-u-sm-12 am-list-main';
          $data_src = "/images/default_pic.png";
          $img_class = 'am-img-responsive';
-         $html_str = '<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />';
+         $html_str = '';
 
         if ($row['picname']){
              $url = $row['picname'];
@@ -146,7 +147,7 @@ if(isset($_GET['ajax'])){
 
         
 //        $data[$index] = $row;
-        $data[$index] = $html_str;
+        $data[$index+1] = $html_str;
         $index++;
     }
     if(!empty($data)){
