@@ -327,7 +327,7 @@ function lib_arclistDone(&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen
     //文档排序的方式
     $ordersql = '';
     if($orderby=='hot' || $orderby=='click') $ordersql = " ORDER BY arc.click $orderWay";
-    else if($orderby == 'sortrank' || $orderby=='pubdate') $ordersql = " ORDER BY arc.id $orderWay";
+    else if($orderby == 'sortrank' || $orderby=='pubdate') $ordersql = " ORDER BY arc.sortrank $orderWay";
     else if($orderby == 'id') $ordersql = "  ORDER BY arc.id $orderWay";
     else if($orderby == 'near') $ordersql = " ORDER BY ABS(arc.id - ".$arcid.")";
     else if($orderby == 'lastpost') $ordersql = "  ORDER BY arc.lastpost $orderWay";
