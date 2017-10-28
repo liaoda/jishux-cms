@@ -85,7 +85,7 @@ if(isset($_GET['ajax'])){
          $article_class_name = 'am-u-sm-12 am-list-main';
          $data_src = "/images/default_pic.png";
          $img_class = 'am-img-responsive';
-         $html_str = '<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />';
+         $html_str = '<hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />';
 
         if ($row['picname']){
              $url = $row['picname'];
