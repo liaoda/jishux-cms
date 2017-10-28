@@ -336,7 +336,7 @@ function lib_arclistDone(&$refObj, &$ctag, $typeid=0, $row=10, $col=1, $titlelen
     else if($orderby == 'goodpost') $ordersql = " order by arc.goodpost $orderWay";
     else if($orderby == 'badpost') $ordersql = " order by arc.badpost $orderWay";
     else if($orderby == 'rand') $ordersql = "  ORDER BY rand()";
-    else $ordersql = " ORDER BY arc.sortrank $orderWay"; 
+    else $ordersql = " ORDER BY arc.id $orderWay";
 
     //limit条件
     $limit = trim(preg_replace('#limit#is', '', $limit));
@@ -668,7 +668,7 @@ function lib_GetAutoChannelID($sortid, $topid)
     global $dsql;
     if(empty($sortid)) $sortid = 1;
     $getstart = $sortid - 1;
-    $row = $dsql->GetOne("SELECT id,typename FROM #@__arctype WHERE reid='{$topid}' And ispart<2 And ishidden<>'1' ORDER BY sortrank asc limit $getstart,1");
+    $row = $dsql->GetOne("SELECT id,typename FROM #@__arctype WHERE reid='{$topid}' And ispart<2 And ishidden<>'1' ORDER BY id asc limit $getstart,1");
     if(!is_array($row)) return 0;
     else return $row['id'];
 }
