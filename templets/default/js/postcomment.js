@@ -37,6 +37,7 @@ function postBadGood(ftype, fid) {
         saveid = '';
         j = 1;
         for (i = saveids.length - 1; i >= 0; i--) {
+            console.log(saveids[i])
             if (saveids[i] === fid && hasid) {
             }
             else {
@@ -51,11 +52,12 @@ function postBadGood(ftype, fid) {
             comment_floor.popover({
                 content: '一次就好~'
             });
-            return;
         }
-        else saveid += ',' + fid;
-        Cookies.set('badgoodid', saveid, {expires: 1});
-        ajaxGB(ftype, fid)
+        else {
+            saveid += ',' + fid;
+            Cookies.set('badgoodid', saveid, {expires: 1});
+            ajaxGB(ftype, fid)
+        }
     }
     else {
         Cookies.set('badgoodid', fid, {expires: 1});
