@@ -116,12 +116,17 @@ if(isset($_GET['ajax'])){
             switch ($_GET['listtype']){
                 case 'img':
                 case 'like':
-                case 'click':
-                $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .' ·  </a>';
-                $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
+                $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
                 $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
-                $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .'</span>';
+                $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
+                $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .'</a>';
                     break;
+                case 'click':
+                $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
+                $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
+                $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
+                $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .'</a>';
+                break;
             }
         }else{
             $html_str.= '<span class="am-icon-server"> '.$row['source'].' · </span>';
