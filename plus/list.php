@@ -115,6 +115,11 @@ if(isset($_GET['ajax'])){
         if (isset($_GET['listtype'])&& $typeid==0){
             switch ($_GET['listtype']){
                 case 'img':
+                    $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .' · </a>';
+                    $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
+                    $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
+                    $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .'</span>';
+                    break;
                 case 'like':
                 $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
                 $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
