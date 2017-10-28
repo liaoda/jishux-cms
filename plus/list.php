@@ -60,6 +60,9 @@ if(isset($_GET['ajax'])){
     $statu = 0;//是否有数据，默认没有数据
     $data = array();
     $index = 0;
+    if ($page!=1){
+        $data[0]='<div style="text-align: center;padding: 5px 0;color: #0e90d2;">第 '.$page.' 页⬇</div>';
+    }
     while($row = $dsql->GetArray("list")) {
         $row['info'] = $row['info'] = $row['infos'] = cn_substr($row['description'], 160);
         $row['filename'] = $row['arcurl'] = GetFileUrl($row['id'],
@@ -113,7 +116,6 @@ if(isset($_GET['ajax'])){
         $html_str.= '<div class="am-list-item-text">';
 
         if (isset($_GET['listtype'])&& $typeid==0){
-
             switch ($_GET['listtype']){
                 case 'img':
                     $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .' · </a>';
@@ -135,10 +137,6 @@ if(isset($_GET['ajax'])){
                 break;
             }
         }else{
-            if ($index==0){
-                $data[0]='<div style="text-align: center;padding: 5px 0;color: #0e90d2;">第 '.$page.' 页⬇</div>';
-
-            }
             $html_str.= '<span class="am-icon-server"> '.$row['source'].' · </span>';
             $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
             $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
@@ -149,14 +147,13 @@ if(isset($_GET['ajax'])){
         $html_str.= '</div>';
         $html_str.= '</li>';
 
-        
-//        $data[$index] = $row;
-        if (isset($_GET['listtype'])&& $typeid==0){
+        if ($page==1){
             $data[$index] = $html_str;
         }else{
             $data[$index+1] = $html_str;
         }
-
+//        $data[$index] = $row;
+        $data[$index+1] = $html_str;
         $index++;
     }
     if(!empty($data)){
