@@ -28,8 +28,8 @@ $(function () {
         url_api:'/plus/list.php',
         typeid: tid,
         page:current,
-        pagesize:15,  //这个就是滑动一次添加几条信息的参数设置
-        loading : 0,
+        pagesize:10,  //这个就是滑动一次添加几条信息的参数设置
+        loading : 0
     };
     function  loadMoreApply(){
         if(loadConfig.loading === 0){

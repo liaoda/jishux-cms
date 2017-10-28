@@ -26,7 +26,7 @@ $(function () {
         typeid: tid,
         page: 2,
         listtype: 'img',
-        pagesize: 15,  //这个就是滑动一次添加几条信息的参数设置
+        pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
         loading: 0,
     };
     
