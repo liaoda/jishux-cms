@@ -24,7 +24,7 @@ if(isset($_GET['ajax'])){
     $page = isset($_GET['page']) ? intval($_GET['page']): 0;//页码
     $pagesize = isset($_GET['pagesize']) ? intval($_GET['pagesize']): 10;//每页多少条，也就是一次加载多少条数据
     $start = $page>0 ? ($page-1)*$pagesize : 0;//数据获取的起始位置。即limit条件的第一个参数。
-    $order = 'a.pubdate';
+    $order = 'a.id';
     if (!isset($_GET['listtype'])){
         $typesql = $typeid ? " WHERE typeid=$typeid" : '';//这个是用于首页实现瀑布流加载，因为首页加载数据是无需分类的，所以要加以判断，如果无需
     }
