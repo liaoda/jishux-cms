@@ -46,12 +46,7 @@
 		}
 	</style>
 	<script type="text/javascript">
-		// User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)
-        function myBrowser(){
-            if (navigator.userAgent.indexOf("Trident")>0||navigator.userAgent.indexOf("MSIE")>0) {
-               alert('为了您更好地体验本站内容，请您不要使用IE或IE内核浏览器~')
-            } //判断是否IE浏览器
-        }
+        function myBrowser(){if (navigator.userAgent.indexOf("Trident")>0||navigator.userAgent.indexOf("MSIE")>0) {alert('为了使您更好地体验本站内容，请您不要使用IE或IE内核浏览器~')}}
         myBrowser()
 	</script>
 </head>
@@ -76,7 +71,6 @@
 			<strong>热搜词汇：</strong>
 			{dede:hotwords num='20' /}
 		</div>
-
 
 		<div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
 			<ul class="jsx-subnav am-tabs-nav am-nav am-nav-tabs">
@@ -110,11 +104,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
-
 	</div>
 	<div class="am-u-md-4 blog-sidebar">
 		<div class="am-panel-group">
@@ -166,8 +155,8 @@
 				</p></div>
 		</div>
 	</div>
-</div>{dede:include filename="footer_m.htm"/}
-
+</div>
+{dede:include filename="footer_m.htm"/}
 <script data-cfasync="true"  src="http://cdn.jishux.com/jquery.min.js"></script>
 <script data-cfasync="true" src="/static/js/topbar.js"></script>
 <script data-cfasync="true"  src="http://cdn.jishux.com/amazeui.min.js"></script>
@@ -175,5 +164,4 @@
 <script data-cfasync="true"  src="http://cdn.jishux.com/lazysizes.min.js"></script>
 <script src="/static/js/clicktoload.js"></script>
 </body>
-
 </html>
