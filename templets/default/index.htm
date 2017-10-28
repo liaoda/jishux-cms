@@ -47,15 +47,11 @@
 	</style>
 	<script type="text/javascript">
         function myBrowser(){
-            var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-            if (userAgent.indexOf("Trident")) {
-                return "IE";
+            if (navigator.userAgent.indexOf("Trident")) {
+               alert('为了您更好地体验本站内容，请您不要使用IE或IE内核浏览器~')
             } //判断是否IE浏览器
         }
-        var mb = myBrowser();
-        if ("IE" === mb) {
-            alert("我是 IE");
-        }
+        myBrowser()
 	</script>
 </head>
 <body>{dede:include filename="header_m.htm"/}
