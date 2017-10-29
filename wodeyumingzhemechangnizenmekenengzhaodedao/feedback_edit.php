@@ -25,7 +25,7 @@ if($dopost=='edit')
         $adminmsg = str_replace(">","&gt;", $adminmsg);
         $adminmsg = str_replace("  ","&nbsp;&nbsp;", $adminmsg);
         $adminmsg = str_replace("\r\n","<br/>\n", $adminmsg);
-        $msg = $msg."<br/>\n"."<blockquote style='color: red'>管理员回复： $adminmsg</blockquote>\n";
+        $msg ="管理员回复： $adminmsg"."<br/>\n"."<blockquote style='color: red'>$msg</blockquote>\n";
     }
     $query = "UPDATE `#@__feedback` SET username='$username',msg='$msg',ischeck=1 WHERE id=$id";
     $dsql->ExecuteNoneQuery($query);
