@@ -60,7 +60,9 @@ $(function () {
 
 
     function loadMoreApply(ltype) {
-         
+        if(!listType){
+            listType='img'
+        }
         var loadConfig =loadsConfig[ltype]
         console.log(loadConfig)
         if (loadConfig.loading === 0) {
