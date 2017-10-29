@@ -60,8 +60,12 @@ if(isset($_GET['ajax'])){
     $statu = 0;//是否有数据，默认没有数据
     $data = array();
     $index = 0;
+    $page_url='';
+    if($typeid){
+        $page_url='/plus/list-'.$typeid.'-'.$total.'-'.$page.'.html';
+    }
     if ($page!=1){
-        $data[0]='<div style="text-align: center;padding: 5px 0;color: #0e90d2;">第 '.$page.' 页⬇</div>';
+        $data[0]='<div style="text-align: center;padding: 5px 0;color: #0e90d2;"><a href="'.$page_url.'" 第 '.$page.' 页⬇</div>';
     }
     while($row = $dsql->GetArray("list")) {
         $row['info'] = $row['info'] = $row['infos'] = cn_substr($row['description'], 160);
