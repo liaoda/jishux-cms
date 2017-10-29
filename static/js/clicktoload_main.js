@@ -43,7 +43,7 @@ $(function () {
         'like':{
             url_api: '/plus/list.php',
             typeid: tid,
-            page: 2,
+            page: 1,
             listtype: 'like',
             pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
             loading: 0,
@@ -51,7 +51,7 @@ $(function () {
         'click':{
             url_api: '/plus/list.php',
             typeid: tid,
-            page: 2,
+            page: 1,
             listtype: 'click',
             pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
             loading: 0,
