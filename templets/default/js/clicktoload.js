@@ -59,11 +59,6 @@ $(function () {
     }
 
 
-
-    function startAJAX() {
-        
-    }
-
     function loadMoreApply(ltype) {
        var loadConfig =loadsConfig[ltype]
         if (loadConfig.loading === 0) {
