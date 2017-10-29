@@ -60,8 +60,8 @@ $(function () {
 
 
     function loadMoreApply(ltype) {
-        if(!listType){
-            listType='img'
+        if(!ltype){
+            ltype='img'
         }
         var loadConfig =loadsConfig[ltype]
         console.log(loadConfig)
