@@ -101,7 +101,7 @@ if(isset($_GET['ajax'])){
         }
         $html_str.= '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">';
         $html_str.= '<div class="am-u-sm-3 am-u-md-2 am-list-thumb">';
-        $html_str.= '<a href="'.$row['arcurl'].'" title="'.$row['title'].'">';
+        $html_str.= '<a target="_blank" href="'.$row['arcurl'].'" title="'.$row['title'].'">';
         if($row['picname']){
             $html_str.= '<img src="http://cdn.jishux.com/default_pic_thumb.png" data-src="'.$data_src.'" class="'.$img_class.'">';
         }else{
@@ -111,14 +111,14 @@ if(isset($_GET['ajax'])){
         $html_str.= '</div>';
         $html_str.= '<div class="'.$article_class_name.'">';
         $html_str.= '<h3 class="am-list-item-hd">';
-        $html_str.= ' <a href="'.$row['arcurl'].'" class="">'.$row['title'].'</a>';
+        $html_str.= ' <a target="_blank" href="'.$row['arcurl'].'" class="">'.$row['title'].'</a>';
         $html_str.= '</h3>';
         $html_str.= '<div class="am-list-item-text">';
 
         if (isset($_GET['listtype'])&& $typeid==0){
             switch ($_GET['listtype']){
                 case 'img':
-                    $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .' · </a>';
+                    $html_str.= '<a target="_blank" href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .' · </a>';
                     $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
                     $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
                     $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .'</span>';
@@ -127,13 +127,13 @@ if(isset($_GET['ajax'])){
                 $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
                 $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
                 $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
-                $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .'</a>';
+                $html_str.= '<a target="_blank" href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .'</a>';
                     break;
                 case 'click':
                 $html_str.= ' <span class="am-icon-eye"> '. $row['click'] .' · </span>';
                 $html_str.= ' <span class="am-icon-heart-o"> '. $row['goodpost'] .' · </span>';
                 $html_str.= ' <span class="am-icon-clock-o"> '. $row['stime'] .' · </span>';
-                $html_str.= '<a href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .'</a>';
+                $html_str.= '<a target="_blank" href="'.$row['typeurl'] .'" class="am-icon-folder-o"> '. $row['typename'] .'</a>';
                 break;
             }
         }else{
