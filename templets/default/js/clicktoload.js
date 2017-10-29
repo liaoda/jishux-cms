@@ -21,48 +21,20 @@ $(function () {
         '                            <p class="place_holder2 am-list-item-text" style="background-color: lightgrey">...</p>\n' +
         '                        </div>\n' +
         '                    </li>'
-    // var loadConfig = {
-    //     url_api: '/plus/list.php',
-    //     typeid: tid,
-    //     page: 2,
-    //     listtype: 'img',
-    //     pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
-    //     loading: 0,
-    // };
+    var loadConfig = {
+        url_api: '/plus/list.php',
+        typeid: tid,
+        page: 2,
+        listtype: 'img',
+        pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
+        loading: 0,
+    };
 
+    function startAJAX() {
 
-    var loadsConfig = {
-        'img':{
-            url_api: '/plus/list.php',
-            typeid: tid,
-            page: 2,
-            listtype: 'img',
-            pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
-            loading: 0,
-        },
-        'like':{
-            url_api: '/plus/list.php',
-            typeid: tid,
-            page: 2,
-            listtype: 'like',
-            pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
-            loading: 0,
-        },
-        'click':{
-            url_api: '/plus/list.php',
-            typeid: tid,
-            page: 2,
-            listtype: 'click',
-            pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
-            loading: 0,
-        }
     }
 
-
     function loadMoreApply(ltype) {
-
-        var loadConfig =loadsConfig[ltype]
-        console.log(loadConfig)
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
             var page =ltype? 1: loadConfig.page;
@@ -77,7 +49,7 @@ $(function () {
             function ajax(url, data) {
                 $.ajax({
                     url: url, data: data, async: true, type: 'GET', dataType: 'json', success: function (data) {
-                        addContent(data,ltype);
+                        addContent(data);
                     }
                 });
             }
@@ -87,7 +59,7 @@ $(function () {
         }
     }
 
-    function addContent(rs,ltype) {
+    function addContent(rs) {
         if (rs.statu === 1) {
             console.log('success')
             var data = rs.list;
@@ -99,13 +71,12 @@ $(function () {
             }
             list.find('li').eq(-1).remove();
             list.append(arr.join(''));
-            loadsConfig[ltype].load_num = rs.load_num;
-            if (total < loadsConfig[ltype].page * loadsConfig[ltype].pagesize || loadsConfig[ltype].page > loadsConfig[ltype].load_num) {
+            loadConfig.load_num = rs.load_num;
+            if (total < loadConfig.page * loadConfig.pagesize || loadConfig.page > loadConfig.load_num) {
                 window.removeEventListener('srcoll', loadMoreApply, false);
             }
-            loadsConfig[ltype].page++;
-            loadsConfig[ltype].loading = 0;
-
+            loadConfig.page++;
+            loadConfig.loading = 0;
             $.AMUI.progress.done();
         }
     }
@@ -120,8 +91,8 @@ $(function () {
     subnavs.each(function (index, val) {
         var listType = $(this).attr('listtype')
         $(this).click(function () {
-            console.log(listType)
-            loadsConfig[listType].page=1;
+            loadConfig.listtype = listType
+            loadConfig.page=1
             list.find('*').remove()
             loadMoreApply(listType)
         })
