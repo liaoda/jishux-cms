@@ -60,7 +60,9 @@ $(function () {
 
 
     function loadMoreApply(ltype) {
+
         var loadConfig =loadsConfig[ltype]
+        console.log(loadConfig)
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
             var page =ltype? 1: loadConfig.page;
@@ -118,9 +120,8 @@ $(function () {
     subnavs.each(function (index, val) {
         var listType = $(this).attr('listtype')
         $(this).click(function () {
-            // loadConfig.listtype = listType
+            console.log(listType)
             loadsConfig[listType].page=1;
-            // loadConfig.page=1
             list.find('li').remove()
             loadMoreApply(listType)
         })
