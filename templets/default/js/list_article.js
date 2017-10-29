@@ -12,4 +12,11 @@ $(function () {
             $(this).error(function () { hideImage($(this)); })
         }
     })
+    $('li.am-g.am-list-item-desced.am-list-item-thumbed.am-list-item-thumb-left').each(function () {
+        $(this).hover(function () {
+            $(this).css('background-color','rgba(0,0,0,.01)')
+        },function () {
+            $(this).css('background-color','white')
+        })
+    })
 })
