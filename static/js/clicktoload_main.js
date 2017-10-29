@@ -21,14 +21,14 @@ $(function () {
         '                            <p class="place_holder2 am-list-item-text" style="background-color: lightgrey">...</p>\n' +
         '                        </div>\n' +
         '                    </li>'
-    // var loadConfig = {
-    //     url_api: '/plus/list.php',
-    //     typeid: tid,
-    //     page: 2,
-    //     listtype: 'img',
-    //     pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
-    //     loading: 0,
-    // };
+    var deloadConfig = {
+        url_api: '/plus/list.php',
+        typeid: tid,
+        page: 2,
+        listtype: 'img',
+        pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
+        loading: 0,
+    };
 
 
     var loadsConfig = {
@@ -60,13 +60,13 @@ $(function () {
 
 
     function loadMoreApply(ltype) {
-
+         
         var loadConfig =loadsConfig[ltype]
         console.log(loadConfig)
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
-            var page =ltype? 1: loadConfig.page;
-            var listtype =ltype?ltype : loadConfig.listtype;
+            var page =loadConfig.page;
+            var listtype =loadConfig.listtype;
             var pagesize = loadConfig.pagesize;
             var url = loadConfig.url_api, data = {ajax: 'pullload', typeid: typeid,listtype:listtype, page: page, pagesize: pagesize};
 
@@ -121,6 +121,9 @@ $(function () {
         var listType = $(this).attr('listtype')
         $(this).click(function () {
             console.log(listType)
+            if(!listType){
+                listType='img'
+            }
             loadsConfig[listType].page=1;
             list.find('*').remove()
             loadMoreApply(listType)
