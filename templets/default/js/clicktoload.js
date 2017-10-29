@@ -122,7 +122,7 @@ $(function () {
         $(this).click(function () {
             console.log(listType)
             loadsConfig[listType].page=1;
-            list.find('li').remove()
+            list.find('*').remove()
             loadMoreApply(listType)
         })
     })
