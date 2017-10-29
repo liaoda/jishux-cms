@@ -25,6 +25,8 @@ li.hover a {color: #0e90d2;}
     animation: shortLoading 1s ease-in-out infinite;
     -webkit-animation: shortLoading 1s ease-in-out infinite;
 }
+li.am-g.am-list-item-desced.am-list-item-thumbed.am-list-item-thumb-left {  margin-bottom: -1px;  background-color: #fff;  border: solid rgba(178,186,194,.15);  border-width: 1px 0;  }
+
 @keyframes loading{0%{width:60%}50%{width:100%}to{width:60%}}
 @-webkit-keyframes loading{0%{width:60%}50%{width:100%}to{width:60%}}
 @keyframes shortLoading{0%{width:20%}50%{width:40%}to{width:20%}}
