@@ -16,3 +16,7 @@ li.hover a {color: #0e90d2;}
 .am-list .am-list-item-desced a, .am-list .am-list-item-thumbed a{  font-weight: 700; color: #333;}
 .am-list .am-list-item-desced a:hover, .am-list .am-list-item-thumbed a:hover{color: #337ab7;}
 .am-g.am-g-fixed.blog-g-fixed {  padding-top: 1rem;  }
+.am-g.am-list-item-desced.am-list-item-thumbed.am-list-item-thumb-left{
+    border-bottom: 1px solid rgba(178, 186, 194, .15);
+}
+li.am-g.am-list-item-desced.am-list-item-thumbed.am-list-item-thumb-left {  margin-bottom: -1px;  background-color: #fff;  border: solid rgba(178,186,194,.15);  border-width: 1px 0;  }
