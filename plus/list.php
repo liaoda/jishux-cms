@@ -62,11 +62,13 @@ if(isset($_GET['ajax'])){
     $index = 0;
     $page_url='';
     if($typeid){
-        $page_url='href="/plus/list-'.$typeid.'-'.$total.'-'.$page.'.html"';
+        $page_url='<a href="/plus/list-'.$typeid.'-'.$total.'-'.$page.'.html"> 第 '.$page.' 页⬇</a>';
 
+    }else{
+        $page_url= '第 '.$page.' 页⬇';
     }
     if ($page!=1){
-        $data[0]='<div style="text-align: center;padding: 5px 0;color: #0e90d2;"><a '.$page_url.'> 第 '.$page.' 页⬇</a></div>';
+        $data[0]='<div style="text-align: center;padding: 5px 0;color: #0e90d2;"> '.$page_url.'</div>';
     }
     while($row = $dsql->GetArray("list")) {
         $row['info'] = $row['info'] = $row['infos'] = cn_substr($row['description'], 160);
