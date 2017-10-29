@@ -68,7 +68,7 @@ $(function () {
             if(total<loadConfig.page*loadConfig.pagesize || loadConfig.page > loadConfig.load_num){
                 window.removeEventListener('srcoll',loadMoreApply,false);
             }
-            $('page-'+loadConfig.page+' li.am-g.am-list-item-desced.am-list-item-thumbed.am-list-item-thumb-left').each(function () {
+            $('li.page-'+loadConfig.page+'.am-g.am-list-item-desced.am-list-item-thumbed.am-list-item-thumb-left').each(function () {
                 $(this).hover(function () {$(this).css('background-color','rgba(0,0,0,.01)')},function () {$(this).css('background-color','white')})})
 
             history.pushState(loadConfig.page,title,'/plus/list-'+tid+'-'+total+'-'+loadConfig.page+'.html')
