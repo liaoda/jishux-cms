@@ -31,7 +31,7 @@ $(function () {
     // };
 
 
-   var loadsConfig = {
+    var loadsConfig = {
         'img':{
             url_api: '/plus/list.php',
             typeid: tid,
@@ -60,7 +60,7 @@ $(function () {
 
 
     function loadMoreApply(ltype) {
-       var loadConfig =loadsConfig[ltype]
+        var loadConfig =loadsConfig[ltype]
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
             var page =ltype? 1: loadConfig.page;
@@ -75,7 +75,7 @@ $(function () {
             function ajax(url, data) {
                 $.ajax({
                     url: url, data: data, async: true, type: 'GET', dataType: 'json', success: function (data) {
-                        addContent(data);
+                        addContent(data,ltype);
                     }
                 });
             }
@@ -85,7 +85,7 @@ $(function () {
         }
     }
 
-    function addContent(rs) {
+    function addContent(rs,ltype) {
         if (rs.statu === 1) {
             console.log('success')
             var data = rs.list;
@@ -97,12 +97,13 @@ $(function () {
             }
             list.find('li').eq(-1).remove();
             list.append(arr.join(''));
-            loadConfig.load_num = rs.load_num;
-            if (total < loadConfig.page * loadConfig.pagesize || loadConfig.page > loadConfig.load_num) {
+            loadsConfig[ltype].load_num = rs.load_num;
+            if (total < loadsConfig[ltype].page * loadsConfig[ltype].pagesize || loadsConfig[ltype].page > loadsConfig[ltype].load_num) {
                 window.removeEventListener('srcoll', loadMoreApply, false);
             }
-            loadConfig.page++;
-            loadConfig.loading = 0;
+            loadsConfig[ltype].page++;
+            loadsConfig[ltype].loading = 0;
+
             $.AMUI.progress.done();
         }
     }
