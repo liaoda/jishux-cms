@@ -21,20 +21,51 @@ $(function () {
         '                            <p class="place_holder2 am-list-item-text" style="background-color: lightgrey">...</p>\n' +
         '                        </div>\n' +
         '                    </li>'
-    var loadConfig = {
-        url_api: '/plus/list.php',
-        typeid: tid,
-        page: 2,
-        listtype: 'img',
-        pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
-        loading: 0,
-    };
-    
+    // var loadConfig = {
+    //     url_api: '/plus/list.php',
+    //     typeid: tid,
+    //     page: 2,
+    //     listtype: 'img',
+    //     pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
+    //     loading: 0,
+    // };
+
+
+   var loadsConfig = {
+        'img':{
+            url_api: '/plus/list.php',
+            typeid: tid,
+            page: 2,
+            listtype: 'img',
+            pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
+            loading: 0,
+        },
+        'like':{
+            url_api: '/plus/list.php',
+            typeid: tid,
+            page: 2,
+            listtype: 'like',
+            pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
+            loading: 0,
+        },
+        'click':{
+            url_api: '/plus/list.php',
+            typeid: tid,
+            page: 2,
+            listtype: 'click',
+            pagesize: 10,  //这个就是滑动一次添加几条信息的参数设置
+            loading: 0,
+        }
+    }
+
+
+
     function startAJAX() {
         
     }
 
     function loadMoreApply(ltype) {
+       var loadConfig =loadsConfig[ltype]
         if (loadConfig.loading === 0) {
             var typeid = loadConfig.typeid;
             var page =ltype? 1: loadConfig.page;
@@ -91,8 +122,9 @@ $(function () {
     subnavs.each(function (index, val) {
         var listType = $(this).attr('listtype')
         $(this).click(function () {
-            loadConfig.listtype = listType
-            loadConfig.page=1
+            // loadConfig.listtype = listType
+            loadsConfig[listType].page=1;
+            // loadConfig.page=1
             list.find('li').remove()
             loadMoreApply(listType)
         })
