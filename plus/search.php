@@ -119,6 +119,11 @@ if(($keyword=='' || strlen($keyword)<2) && empty($typeid))
     ShowMsg('关键字不能小于2个字节！','-1');
     exit();
 }
+if($keyword=='angelina')
+{
+    ShowMsg('此关键词已被禁止搜索！','-1');
+    exit();
+}
 //
 ////检查搜索间隔时间
 //$lockfile = DEDEDATA.'/time.lock.inc';
