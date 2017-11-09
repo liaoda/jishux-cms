@@ -160,7 +160,7 @@ if(isset($_GET['ajax'])){
             $data[$index+1] = $html_str;
         }
 //        $data[$index] = $row;
-        $data[$index+1] = $html_str;
+//        $data[$index+1] = $html_str;
         $index++;
     }
     if(!empty($data)){
