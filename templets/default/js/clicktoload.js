@@ -61,15 +61,18 @@ $(function () {
 
     function addContent(rs) {
         if (rs.statu === 1) {
-            console.log('success')
             var data = rs.list;
             var total = rs.total;
             var arr = [];
             var length = data.length;
+            console.log('length= ',data.length)
             for (var i = 0; i < length; i++) {
                 arr.push(data[i])
             }
-            list.find('li').eq(-1).remove();
+            if (loadConfig.page!==1){
+                list.find('li').eq(-1).remove();
+            }
+
             list.append(arr.join(''));
             loadConfig.load_num = rs.load_num;
             if (total < loadConfig.page * loadConfig.pagesize || loadConfig.page > loadConfig.load_num) {
