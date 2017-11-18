@@ -4,7 +4,6 @@ table code {white-space: inherit;}
 .am-u-sm-4.am-list-thumb{max-height: 20rem;}
 .blog-content * {max-width: 100%;}
 li.hover a {color: #0e90d2;}
-a:visited {color: #888;}
 .am-u-md-6 {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 @media only screen and (max-width: 640px){.intro{display: none} .am-list-news.am-u-md-6.am-no-layout{padding: 0}}
 @media only screen and (min-width: 641px) { .blog-sidebar { font-size: 1.4rem; } }
@@ -27,8 +26,9 @@ a:visited {color: #888;}
     -webkit-animation: shortLoading 1s ease-in-out infinite;
 }
 li.am-g.am-list-item-desced.am-list-item-thumbed.am-list-item-thumb-left {  margin-bottom: -1px;  background-color: #fff;  border: solid rgba(178,186,194,.15);  border-width: 1px 0;  }
-
+a:visited {color: #888;}
 @keyframes loading{0%{width:60%}50%{width:100%}to{width:60%}}
 @-webkit-keyframes loading{0%{width:60%}50%{width:100%}to{width:60%}}
 @keyframes shortLoading{0%{width:20%}50%{width:40%}to{width:20%}}
 @-webkit-keyframes shortLoading{0%{width:20%}50%{width:40%}to{width:20%}}
+
