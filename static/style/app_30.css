@@ -4,6 +4,7 @@ table code {white-space: inherit;}
 .am-u-sm-4.am-list-thumb{max-height: 20rem;}
 .blog-content * {max-width: 100%;}
 li.hover a {color: #0e90d2;}
+a:visited {color: #888;}
 .am-u-md-6 {overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
 @media only screen and (max-width: 640px){.intro{display: none} .am-list-news.am-u-md-6.am-no-layout{padding: 0}}
 @media only screen and (min-width: 641px) { .blog-sidebar { font-size: 1.4rem; } }
