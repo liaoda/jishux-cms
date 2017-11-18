@@ -13,9 +13,8 @@ li.hover a {color: #0e90d2;}
 .blog-footer {padding: 10px 0;text-align: center;background-color: #f8f8f8;border-width: 1px 0 0;border-style: solid;border-color: #ddd;}
 .cnzz {display: inline;}
 .police {background: url(http://www.jishux.com/images/icon-police.png) 0 0 no-repeat;display: inline-block;width: 14px;height: 16px;margin-right: 6px;}
-a:visited {color: #888;}
 .am-list .am-list-item-desced a, .am-list .am-list-item-thumbed a{  font-weight: 700; color: #333;}
-a:visited {color: #888;}
+.am-list .am-list-item-desced a, .am-list .am-list-item-thumbed a:visited {color: #888;}
 .am-list .am-list-item-desced a:hover, .am-list .am-list-item-thumbed a:hover{color: #337ab7;}
 .am-g.am-g-fixed.blog-g-fixed {  padding-top: 1rem;  }
 .place_holder{
