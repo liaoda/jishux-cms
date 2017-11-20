@@ -57,9 +57,9 @@
 			<h3><strong>公告</strong>：{dede:global.cfg_notice/}</h3>
 		</div>
 
-		<div class="am-list-news-default">
-			<span>今日更新文章 <strong>{dede:sql sql="SELECT count(id) AS c FROM dede_archives WHERE to_days(created_at) = to_days(now()); "}[field:c /]{/dede:sql}</strong> 篇，总文档数 <strong>{dede:sql sql="SELECT count(id) AS c FROM dede_archives"}[field:c /]{/dede:sql}</strong> ，网友评论 <strong>{dede:sql sql="SELECT floor(count(id)/4) AS c FROM dede_archives WHERE pubdate > UNIX_TIMESTAMP( CURDATE( ) ) "}[field:c /]{/dede:sql}</strong> 次</span>
-		</div>
+		<!--<div class="am-list-news-default">-->
+			<!--<span>今日更新文章 <strong>{dede:sql sql="SELECT count(id) AS c FROM dede_archives WHERE to_days(created_at) = to_days(now()); "}[field:c /]{/dede:sql}</strong> 篇，总文档数 <strong>{dede:sql sql="SELECT count(id) AS c FROM dede_archives"}[field:c /]{/dede:sql}</strong> ，网友评论 <strong>{dede:sql sql="SELECT floor(count(id)/4) AS c FROM dede_archives WHERE pubdate > UNIX_TIMESTAMP( CURDATE( ) ) "}[field:c /]{/dede:sql}</strong> 次</span>-->
+		<!--</div>-->
 		<div class="am-list-news-default">
 			<strong>热门标签：</strong>
 			{dede:tag sort='week' getall='1' row='20'}
