@@ -56,7 +56,7 @@
 		<div class="am-u-md-12 am-u-sm-centered">
 			<h3><strong>公告</strong>：{dede:global.cfg_notice/}</h3>
 		</div>
-		
+
 
 		<div class="am-list-news-default">
 			{dede:sql sql="SELECT day_updated_count as d,total_count as t,comment_count as c FROM dede_updated_count WHERE id=1;"}
@@ -131,26 +131,7 @@
 			</section>
 		</div>
 	</div>
-	<div class="jishux-list-types am-u-md-12">
-		<div data-am-widget="list_news" class="am-list-news am-list-news-default">
-			{dede:channelartlist}
-			<div data-am-widget="list_news" class="am-list-news   am-u-md-6">
-				<!--列表标题-->
-				<div class="am-list-news-hd am-cf">
-					<!--带更多链接-->
-					<h2>{dede:field name='typename'/}</h2>
-						<a target="_blank" rel="noopener"  class="am-list-news-more am-fr" href="plus/list-{dede:field name='id'/}-1.html">查看更多 &raquo;</a>
-				</div>
-				<div class="am-list-news-bd">
-					<ul class="am-list">{dede:arclist titlelen='60' row='10'}
-						<li class="am-g am-list-item-dated"> <a target="_blank" rel="noopener" href="[field:arcurl/]" class="am-list-item-hd">[field:title /]</a>
-							<span class="am-list-date">[field:stime/]</span>
-						</li>{/dede:arclist}</ul>
-				</div>
 
-			</div>{/dede:channelartlist}
-		</div>
-	</div>
 	<div class="am-u-md-12">
 		<div class="am-u-md-12" style="padding: 1rem 0">
 			<div class="bx2"><p><strong>友情链接（欢迎业界网站交换链接）</strong></p>
