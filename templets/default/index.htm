@@ -64,7 +64,17 @@
 			{/dede:sql}
 		</div>
 
-		
+		<div class="am-list-news-default">
+			<strong>热门标签：</strong>
+			{dede:tag sort='week' getall='1' row='20'}
+			<a target="_blank" rel="noopener" href='[field:link/]' class="gray-border top-tag-span">[field:tag /]</a>
+			{/dede:tag}
+			<a class="gray-border top-tag-span blue-border am-icon-tags" href='/tags.php' > more </a>
+		</div>
+		<div class="am-list-news-default">
+			<strong>热搜词汇：</strong>
+			{dede:hotwords num='20' /}
+		</div>
 
 		<div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
 			<ul class="jsx-subnav am-tabs-nav am-nav am-nav-tabs">
@@ -100,7 +110,26 @@
 		</div>
 	</div>
 	<div class="am-u-md-4 blog-sidebar">
-
+		<div class="am-panel-group">
+			<section class="am-panel am-panel-default">
+				<div class="am-panel-hd">最新推荐</div>
+				<ul class="am-list blog-list">{dede:arclist flag='c' titlelen=40 row='10'}
+					<li><a target="_blank" rel="noopener" href="[field:arcurl/]">[field:title/]</a>
+					</li>{/dede:arclist}</ul>
+			</section>
+			<section class="am-panel am-panel-default">
+				<div class="am-panel-hd">热点内容</div>
+				<ul class="am-list blog-list">{dede:arclist row='10' orderby='hot' titlelen=40}
+					<li><a target="_blank" rel="noopener" href="[field:arcurl/]">[field:title/]</a>
+					</li>{/dede:arclist}</ul>
+			</section>
+			<section class="am-panel am-panel-default">
+				<div class="am-panel-hd">最近关注</div>
+				<ul class="am-list blog-list">{dede:arclist row='10' orderby='pubdate' titlelen=40}
+					<li><a target="_blank" rel="noopener" href="[field:arcurl/]">[field:title/]</a>
+					</li>{/dede:arclist}</ul>
+			</section>
+		</div>
 	</div>
 	<div class="jishux-list-types am-u-md-12">
 		<div data-am-widget="list_news" class="am-list-news am-list-news-default">
