@@ -38,7 +38,8 @@ $cfg_ml = new MemberLogin();
 
 if($needRank < 0 && $arc->Fields['mid'] != $cfg_ml->M_ID)
 {
-    ShowMsg('文章尚未审核,非作者本人无权查看!', 'javascript:;');
+//    ShowMsg('文章尚未审核,非作者本人无权查看!', 'javascript:;');
+    ShowMsg('文章已被删除!', 'javascript:;');
     exit();
 }
 
