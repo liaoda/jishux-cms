@@ -120,7 +120,7 @@
         $.AMUI.progress.start();
         $(".blog-content img").wrap("<a data-fancybox='gallery' href='#'></a>").each(function (index, val) {
             $(this).parent().attr('href', $(this).attr('src'))
-            $(this).attr('class','lazyload').attr('data-src',$(this).attr('src')).attr('src','http://cdn.jishux.com/default_pic.png')
+            $(this).attr('class','lazyload').attr('data-src',$(this).attr('src')).attr('src','https://cdn.jishux.com/default_pic.png')
         })
         $.AMUI.progress.done();
     });
