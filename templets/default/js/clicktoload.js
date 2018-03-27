@@ -5,7 +5,7 @@ $(function () {
     var tid = $('.blog-g-fixed').attr('tid')
     var footer = '<li  class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">\n' +
         '                        <div class="am-u-sm-3 am-u-md-2 am-list-thumb">\n' +
-        '                                <img p-src="---"  src="http://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
+        '                                <img p-src="---"  src="https://cdn.jishux.com/default_pic_thumb.png" class="am-img-responsive">\n' +
         '\n' +
         '                        </div>\n' +
         '                        <div class="am-u-sm-9 am-u-md-10 am-list-main">\n' +
