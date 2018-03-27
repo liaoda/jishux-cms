@@ -110,7 +110,7 @@ if(isset($_GET['ajax'])){
         $html_str.= '<div class="am-u-sm-3 am-u-md-2 am-list-thumb">';
         $html_str.= '<a target="_blank" rel="noopener" href="'.$row['arcurl'].'" title="'.$row['title'].'">';
         if($row['picname']){
-            $html_str.= '<img src="http://cdn.jishux.com/default_pic_thumb.png" data-src="'.$data_src.'" class="'.$img_class.'">';
+            $html_str.= '<img src="https://cdn.jishux.com/default_pic_thumb.png" data-src="'.$data_src.'" class="'.$img_class.'">';
         }else{
             $html_str.= '<img data-src="'.$data_src.'" class="'.$img_class.'">';
         }
